@@ -3,19 +3,25 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var engine = require('consolidate');  //html 렌더링
+var mustacheExpress = require('mustache-express');  //html 렌더링
+var passport = require('passport');
+const session = require('express-session');
+require('dotenv').config();
 
-//라우터 및 ORM 연결
-var pageRouter = require('./routes/page');
+//라우터, ORM, passport
+const pageRouter = require('./routes/page');
+const authRouter = require('./routes/auth');
 var sequelize = require('./models').sequelize;
+const passportConfig = require('./passport');
 
 //mysql 연동
 var app = express();
 sequelize.sync();
+passportConfig(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html', engine.mustache);
+app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
 app.set('port', process.env.PORT || 8001);
 
@@ -23,9 +29,21 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(session({
+  resave: true,
+  saveUninitialized: false,
+  secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+  },
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', pageRouter);
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
