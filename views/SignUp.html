@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+  $(".login-form").validate({
+  rules: {
+    username: {
+      required: true,
+      minlength: 4
+    },     
+    email: {
+      required: true,
+      email:true
+    },
+    password: {
+      required: true,
+      minlength: 5
+    },
+    cpassword: {
+      required: true,
+      minlength: 5,
+      equalTo: "#password"
+    }
+  },
+
+  messages: {
+    username:{
+      required: "Enter a username",
+      minlength: "Enter at least 4 characters"
+    }
+  },
+  errorElement : 'div',
+  errorPlacement: function(error, element) {
+    var placement = $(element).data('error');
+    if (placement) {
+      $(placement).append(error)
+    } else {
+      error.insertAfter(element);
+    }
+  }
+});
+</script>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+<title>Watch Thater</title>
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+.jua, #topMenu, #topMenu ul, #topMenu ul li, .nenuLink, .submenuLink, .topMenuLi, .longLink, h3, h1 {font-family: 'Jeju Gothic', sans-serif;}
+.box{margin:40px; border-style:solid; padding:10px;}
+#wrapper{max-width: 700px; margin: 0 auto; float:center;}
+#topMenu { height: 30px; /* 메인 메뉴의 높이 */ 
+    width: 850px; /* 메인 메뉴의 넓이 */ }
+#topMenu ul { /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */ list-style-type: none; /* 메인 메뉴 안의 ul 내부의 목록 표시를 없애줌 */
+ margin: 0px; /* 메인 메뉴 안의 ul의 margin을 없앰 */
+  padding: 0px; /* 메인 메뉴 안의 ul의 padding을 없앰 */ } 
+#topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */ color: white; /* 글씨 색을 흰색으로 설정 */ background-color: #FFB4B9; /* 배경 색을 RGB(2D2D2D)로 설정 */ float: left; /* 왼쪽으로 나열되도록 설정 */ line-height: 30px; /* 텍스트 한 줄의 높이를 30px로 설정 */ vertical-align: middle; /* 세로 정렬을 가운데로 설정 */ text-align: center; /* 텍스트를 가운데로 정렬 */ position: relative; /* 해당 li 태그 내부의 top/left 포지션 초기화 */ } 
+.menuLink, .submenuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */ text-decoration:none; /* a 태그의 꾸밈 효과 제거 */ display: block; /* a 태그의 클릭 범위를 넓힘 */ width: 145px; /* 기본 넓이를 150px로 설정 */ font-size: 15px; /* 폰트 사이즈를 12px로 설정  /* 폰트를 굵게 설정 */ font-family: 'Jeju Gothic', Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ } 
+.menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */ color: black; } 
+.topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */ color: white; /* 글씨 색 빨간색 */ background-color: #FFB4B9; /* 배경색을 밝은 회색으로 설정 */ } 
+.submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */ color: #2d2d2d; /* 글씨 색을 RGB(2D2D2D)로 설정 */ background-color: white; /* 배경색을 흰색으로 설정 */ border: solid 1px black; /* 테두리를 설정 */ margin-top: -1px; /* 위 칸의 하단 테두리와 아래칸의 상단 테두리가 겹쳐지도록 설덩 */ } 
+.longLink { /* 좀 더 긴 메뉴 스타일 설정 */ width: 145px; /* 넓이는 190px로 설정 */ } 
+.submenu { /* 하위 메뉴 스타일 설정 */ position: absolute; /* html의 flow에 영향을 미치지 않게 absolute 설정 */ height: 0px; /* 초기 높이는 0px로 설정 */ overflow: hidden; /* 실 내용이 높이보다 커지면 해당 내용 감춤 */ transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(기본) */ -webkit-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 크롬/사파라ㅣ) */ -moz-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 파폭) */ -o-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 오페라) */ } 
+.topMenuLi:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */ height: 93px; /* 높이를 93px로 설정 */ } 
+.submenuLink:hover { /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */ color: white; /* 글씨색을 빨간색으로 설정 */ background-color: #FF5675; /* 배경을 RGB(DDDDDD)로 설정 */ }
+}
+#upMenu{
+  height: 18px;
+  width: 400px;
+}
+#upMenu ul{list-style-type: none; border-color: #FFB4B9;}
+#upMenu ul li{
+  color: #FFB4B9;
+  background-color: white;
+  float: right;
+  line-height: 17px;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  border-color: #FFB4B9;
+}
+.upmenuLink{
+  text-decoration: none;
+  color:#FFB4B9;
+  display:block;
+  width: 100px;
+  font-size: 14px;
+  font-family: 'Jeju Gothic';
+  border-color: #FFB4B9;
+}
+</style>
+<meta charset="utf-8">
+</head>
+
+<body>
+<div id="wrapper">
+<nav id="upMenu" style="float:right;" class="jua"> 
+  <ul class="jua"> 
+    <li class="upMenuLi"> <a class="upmenuLink" href="login.html">로그인 </a></li><li>|</li>
+    <li class="upMenuLi"> <a class="upmenuLink" href="#">마이페이지</a></li>
+    </li>
+  </ul>
+</nav>
+<p><a href="Home.html"><img src="banner.png" width="500" height="250" style="margin-left:auto; margin-right:auto; display: block;"></a></p>
+
+<nav id="topMenu" style="align-items: center;" class="jua"> 
+  <ul class="jua"> 
+    <li class="topMenuLi"> <a class="menuLink">Introduce</a>
+      <ul class="submenu">
+      <li><a class="submenuLink longLink" href="Introduce_what.html">Introduce</a></li>
+      <li><a class="submenuLink longLink" href="Introduce_office.html">office</a></li></ul> </li><li>|</li>
+      <li class="topMenuLi"> <a class="menuLink" href="act.html">연극</a> </li> <li>|</li>
+      <li class="topMenuLi"> <a class="menuLink" href="musical.html">뮤지컬</a> </li> <li>|</li>
+      <li class="topMenuLi"> <a class="menuLink" href="Theater_news.html">Teater News</a> </li> <li>|</li>
+      <li class="topMenuLi"> <a class="menuLink" href="home.html">Home</a> </li>
+    </li>
+  </ul>
+</nav>
+
+<section>
+<br><br><br><br>
+
+<form method="post" name="twin">
+  <table width="800">
+    <tr height="40">
+      <td align="center" style="font-size:30px;"><b>[회원가입]</b></td>
+    </tr>
+  </table><br><br>
+  <table width="700" height="600" cellpadding="0" style="border-collapse:collapse; font-size:9pt;">
+    <tr class="regiser" height="30">
+      <td width="5%" align="center">*</td>
+      <td width=15%>회원 ID</td>
+      <td><input type="text" name="wUserID" />&nbsp;<a href="javascript:id_check()" style="text-decoration: none; color:black;">[ID 중복 검사]</a></td>
+    </tr>
+    <tr height="7">
+      <td colspan="3"><hr /></td>
+    </tr>
+    <tr class="register" height="30">
+      <td width="5%" align="center">*</td>
+      <td width="15%">비밀번호 </td>
+      <td><input type="passwd" name="wUserPW" id="pw" onchange="isSame()" /></td>
+    <tr class="register" height="30">
+      <td width="5%" align="center">*</td>
+      <td width="15%">비밀번호 확인</td>
+      <td><input type="passwd" name="wUserPWConfirm" id="pwCheck" onchange="isSame()" />&nbsp;&nbsp;<span id="same"></span></td>
+       <tr height="7">
+      <td colspan="3"><hr /></td>
+    </tr>
+    <tr class="register" height="30">
+      <td width="5%" align="center">*</td>
+      <td width="15%">이름</td>
+      <td><input type="text" name="wUserName" /></td>
+             <tr height="7">
+      <td colspan="3"><hr /></td>
+    </tr>
+    <tr class="register" height="30">
+      <td width="5%" align="center">*</td>
+      <td width="15%">성별</td>
+      <td>남성<input type="radio" name="wUserGender" value="1" checked />&nbsp;여성<input type="radio" name="wUserGender" value="2"/></td>
+             <tr height="7">
+      <td colspan="3"><hr /></td>
+    </tr>
+    <tr class="register" height="30">
+      <td width="5%" align="center">*</td>
+      <td width="15%">휴대전화</td>
+      <td><input type="tel" name="wUserPhone" /></td>
+             <tr height="7">
+      <td colspan="3"><hr /></td>
+    </tr>
+    <tr class="register" height="30">
+      <td width="5%" align="center">*</td>
+      <td width="15%">이메일</td>
+      <td><input type="email" name="wUserEmail" /></td>
+    </tr>
+  </tr>
+  </table>
+
+
+      <h1 align="center" style="font-size:25px;"><a href="SignUp.html" style="text-decoration: none; color:black;" type="submit"align="center" style="font-size:25px;"><b>제출</b></a></h1><br>
+    
+
+</section>
+</div>
+</body>
+</html>

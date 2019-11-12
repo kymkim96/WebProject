@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+<title>Watch Thater</title>
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+.jua, #topMenu, #topMenu ul, #topMenu ul li, .nenuLink, .submenuLink, .topMenuLi, .longLink, h3, h1 {font-family: 'Jeju Gothic', sans-serif;}
+.box{margin:40px; border-style:solid; padding:10px;}
+#wrapper{max-width: 700px; margin: 0 auto; float:center;}
+.search{height:40px; width:760px; border:1px solid #FFB4B9; background: #ffffff;}
+input{font-size:16px; width:500px; padding:10px; border:1px; outline:none; float:left;}
+button{width:50px; height:100%; border:0px; background:#FFB4B9; outline:none; float:right; color:#ffffff;}
+#topMenu { height: 30px; /* 메인 메뉴의 높이 */ 
+		width: 850px; /* 메인 메뉴의 넓이 */ }
+#topMenu ul { /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */ list-style-type: none; /* 메인 메뉴 안의 ul 내부의 목록 표시를 없애줌 */
+ margin: 0px; /* 메인 메뉴 안의 ul의 margin을 없앰 */
+  padding: 0px; /* 메인 메뉴 안의 ul의 padding을 없앰 */ } 
+#topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */ color: white; /* 글씨 색을 흰색으로 설정 */ background-color: #FFB4B9; /* 배경 색을 RGB(2D2D2D)로 설정 */ float: left; /* 왼쪽으로 나열되도록 설정 */ line-height: 30px; /* 텍스트 한 줄의 높이를 30px로 설정 */ vertical-align: middle; /* 세로 정렬을 가운데로 설정 */ text-align: center; /* 텍스트를 가운데로 정렬 */ position: relative; /* 해당 li 태그 내부의 top/left 포지션 초기화 */ } 
+.menuLink, .submenuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */ text-decoration:none; /* a 태그의 꾸밈 효과 제거 */ display: block; /* a 태그의 클릭 범위를 넓힘 */ width: 145px; /* 기본 넓이를 150px로 설정 */ font-size: 15px; /* 폰트 사이즈를 12px로 설정  /* 폰트를 굵게 설정 */ font-family: 'Jeju Gothic', Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ } 
+.menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */ color: black; } 
+.topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */ color: white; /* 글씨 색 빨간색 */ background-color: #FFB4B9; /* 배경색을 밝은 회색으로 설정 */ } 
+.submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */ color: #2d2d2d; /* 글씨 색을 RGB(2D2D2D)로 설정 */ background-color: white; /* 배경색을 흰색으로 설정 */ border: solid 1px black; /* 테두리를 설정 */ margin-top: -1px; /* 위 칸의 하단 테두리와 아래칸의 상단 테두리가 겹쳐지도록 설덩 */ } 
+.longLink { /* 좀 더 긴 메뉴 스타일 설정 */ width: 145px; /* 넓이는 190px로 설정 */ } 
+.submenu { /* 하위 메뉴 스타일 설정 */ position: absolute; /* html의 flow에 영향을 미치지 않게 absolute 설정 */ height: 0px; /* 초기 높이는 0px로 설정 */ overflow: hidden; /* 실 내용이 높이보다 커지면 해당 내용 감춤 */ transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(기본) */ -webkit-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 크롬/사파라ㅣ) */ -moz-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 파폭) */ -o-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 오페라) */ } 
+.topMenuLi:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */ height: 93px; /* 높이를 93px로 설정 */ } 
+.submenuLink:hover { /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */ color: white; /* 글씨색을 빨간색으로 설정 */ background-color: #FF5675; /* 배경을 RGB(DDDDDD)로 설정 */ }
+h1 {text-align:center; background-color:#FFB4B9; text-align: center;}
+#upMenu ul{list-style-type: none; border-color: #FFB4B9;}
+#upMenu ul li{
+  color: #FFB4B9;
+  background-color: white;
+  float: right;
+  line-height: 17px;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  border-color: #FFB4B9;
+}
+.upmenuLink{
+  text-decoration: none;
+  color:#FFB4B9;
+  display:block;
+  width: 100px;
+  font-size: 14px;
+  font-family: 'Jeju Gothic';
+  border-color: #FFB4B9;
+</style>
+<meta charset="utf-8">
+</head>
+
+<body>
+<div id="wrapper">
+<nav id="upMenu" style="float:right;" class="jua"> 
+   <ul class="jua"> 
+      <li class="upMenuLi"> <a class="upmenuLink" href="login.html">로그인 </a></li><li>|</li>
+      <li class="upMenuLi"> <a class="upmenuLink" href="#">마이페이지</a></li>
+      </li>
+   </ul>
+</nav>
+<p><a href="Home.html"><img src="banner.png" width="500" height="250" style="margin-left:auto; margin-right:auto; display: block;"></a></p>
+
+<nav id="topMenu" style="align-items: center;" class="jua"> 
+	<ul class="jua"> 
+		<li class="topMenuLi"> <a class="menuLink">Introduce</a>
+			<ul class="submenu">
+			<li><a class="submenuLink longLink" href="Introduce_what.html">Introduce</a></li>
+			<li><a class="submenuLink longLink" href="Introduce_office.html">office</a></li></ul> </li><li>|</li>
+			<li class="topMenuLi"> <a class="menuLink" href="act.html">연극</a> </li> <li>|</li>
+			<li class="topMenuLi"> <a class="menuLink" href="musical.html">뮤지컬</a> </li> <li>|</li>
+			<li class="topMenuLi"> <a class="menuLink" href="Theater_news.html">Teater News</a> </li> <li>|</li>
+			<li class="topMenuLi"> <a class="menuLink" href="Home.html">Home</a> </li>
+		</li>
+	</ul>
+</nav>
+
+<section>
+<br><br><br><br>
+<div class="search">
+		<input type="text" placeholder="검색어 입력">
+		<button>Search</button>
+	</div><br>
+	<table class="jua" style="margin-left:auto; margin-right:auto; font-color:black;" cellspacing="20px">
+		<tbody>
+			<tr>
+				<td><img src="https://i.pinimg.com/originals/bf/a2/23/bfa223ea81d8fd8981d12b52168d329b.jpg" width="125" height="200"></td>
+				<td><img src="http://cfile3.uf.tistory.com/image/2624114F54B3BE251F7023" width="125" height="200"></td>
+				<td><img src="http://bntnews.hankyung.com/bntdata/images/photo/201604/049f9162a757801b868891959b236c53.jpg" width="125" height="200"></td>
+				<td><img src="http://img.newspim.com/news/2018/04/26/1804261043283760.jpg" width="125" height="200"></td>
+				<td><img src="http://www.jtn.co.kr/files/old/WebWrite_images/0028661562_5447/20110526e_11_1.jpg" width="125" height="200"></td>
+			</tr>
+			<tr align="center" class="jua" style="font-size: 17px;">
+				<td><a href="#" style="color:black; text-decoration: none;">특수병동</td>
+				<td><a href="#" style="color:black; text-decoration: none;">명성황후</td>
+				<td><a href="#" style="color:black; text-decoration: none;">페스트</td>
+				<td><a href="#" style="color:black; text-decoration: none;">이블데드</td>
+				<td><a href="#" style="color:black; text-decoration: none;">엘리자벳</td>
+			</tr>
+		<table class="jua" style="margin-left:auto; margin-right:auto; font-color:black;" cellspacing="20px">
+		<tbody>
+			<tr>
+				<td><img src="https://i.pinimg.com/originals/53/58/10/535810bb7d50e89d76a9c220a2eb8f0e.jpg" width="125" height="200"></td>
+				<td><img src="http://www.topstarnews.net/news/photo/first/201310/img_42746_1_org.jpg" width="125" height="200"></td>
+				<td><img src="http://cphoto.asiae.co.kr/listimglink/6/2015090314232312477_1.jpg" width="125" height="200"></td>
+				<td><img src="http://img.tenasia.hankyung.com/webwp_kr/wp-content/uploads/2017/04/2017040618475560497-540x782.jpg" width="125" height="200"></td>
+				<td><img src="http://blossomenter.com/actors/son_seungwon/wp-content/uploads/2014/04/%EC%86%90%EC%8A%B9%EC%9B%90-%EB%AE%A4%EC%A7%80%EC%BB%AC-%ED%97%A4%EB%93%9C%EC%9C%85-%ED%8F%AC%EC%8A%A4%ED%84%B0-2014.05.jpg" width="125" height="200"></td>
+			</tr>
+			<tr align="center" class="jua" style="font-size: 17px;">
+				<td><a href="#" style="color:black; text-decoration: none;">라카지</td>
+				<td><a href="#" style="color:black; text-decoration: none;">카르멘</td>
+				<td><a href="#" style="color:black; text-decoration: none;">모차르트</td>
+				<td><a href="#" style="color:black; text-decoration: none;">캣츠</td>
+				<td><a href="#" style="color:black; text-decoration: none;">헤드윅</td>
+			</tr></tbody></table>
+		<table class="jua" style="margin-left:auto; margin-right:auto; font-color:black;" cellspacing="20px">
+		<tbody>
+			<tr>
+				<td><img src="http://www.buddhismjournal.com/news/photo/201006/3168_4675_4646.jpg" width="125" height="200"></td>
+				<td><img src="http://ggcf.or.kr/files/cultural_event/BCF569CF-7924-44EF-B044-483FB495B894.jpg?cmd=thumb&width=244" width="125" height="200"></td>
+				<td><img src="http://www.khuplaza.com/files/attach/images/13817932/283/157/015/e51f5450deb7ef3b7deee768a67488a3.jpg" width="125" height="200"></td>
+				<td><img src="http://www.wizculture.com/news/photo/201612/907_1224_127.jpg" width="125" height="200"></td>
+				<td><img src="https://i.pinimg.com/originals/9b/08/ea/9b08ea1c6dd8b518e87635662ee997d4.jpg" width="125" height="200"></td>
+			</tr>
+			<tr align="center" class="jua" style="font-size: 17px;">
+				<td><a href="#" style="color:black; text-decoration: none;">서편제</td>
+				<td><a href="#" style="color:black; text-decoration: none;">레베카</td>
+				<td><a href="#" style="color:black; text-decoration: none;">원룸</td>
+				<td><a href="#" style="color:black; text-decoration: none;">영웅</td>
+				<td><a href="#" style="color:black; text-decoration: none;">왕의 나라</td>
+			</tr></tbody></table><br>
+		<table class="jua" style="margin-left:auto; margin-right:auto; font-color:black;" cellspacing="20px">
+		<tbody>
+			<tr>
+				<td><img src="http://blog.lgchem.com/wp-content/uploads/2014/11/the-days.jpg" width="125" height="200"></td>
+				<td><img src="http://www.munhwanews.com/news/photo/201704/46698_85138_4937.jpg" width="125" height="200"></td>
+				<td><img src="http://must.caci.or.kr/wordpress/wp-content/uploads/2015/10/1510-1k4.jpg" width="125" height="200"></td>
+				<td><img src="http://ac.gyeryong.go.kr/upload/performance/performance_poster_0_1414024172.jpg" width="125" height="200"></td>
+				<td><img src="http://nimage.newsway.kr/photo/2015/04/01/2015040110573202132_20150401110524_1.jpg" width="125" height="200"></td>
+			<tr align="center" class="jua" style="font-size: 17px;">
+				<td><a href="#" style="color:black; text-decoration: none;">그날들</td>
+				<td><a href="#" style="color:black; text-decoration: none;">마타하리</td>
+				<td><a href="#" style="color:black; text-decoration: none;">명동로망스</td>
+				<td><a href="#" style="color:black; text-decoration: none;">빨래</td>
+				<td><a href="#" style="color:black; text-decoration: none;">데스노트</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+</div>
+</body>
+</html>
