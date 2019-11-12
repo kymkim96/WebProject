@@ -18,10 +18,10 @@ module.exports = (sequelize, DataTypes) => (
             allowNull: true,
             defaultValue: 'local',
         },
-        snsId: {
-            type: DataTypes.STRING(30),
+        adminCode: {
+            type: DataTypes.STRING(20),
             allowNull: true,
-        },
+        }
     }, {
         timestamps: true,
         paranoid: true,

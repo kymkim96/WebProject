@@ -13,7 +13,12 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 db.User = require('./user')(sequelize, Sequelize);
 db.Review = require('./review')(sequelize, Sequelize);
+db.Poster = require('./poster')(sequelize, Sequelize);
+
 db.User.hasMany(db.Review);
 db.Review.belongsTo(db.User);
+
+db.Poster.hasMany(db.Review);
+db.Review.belongsTo(db.Poster);
 
 module.exports = db;
