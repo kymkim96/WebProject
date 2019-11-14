@@ -11,10 +11,12 @@ require('dotenv').config();
 //라우터, ORM, passport
 const pageRouter = require('./routes/page');
 const authRouter = require('./routes/auth');
+const uploadRouter = require('./routes/upload');
+const adminRouter = require('./routes/adminpage');
 var sequelize = require('./models').sequelize;
 const passportConfig = require('./passport');
 
-//mysql 연동
+//mysql 연동, passport 설정
 var app = express();
 sequelize.sync();
 passportConfig(passport);
@@ -44,6 +46,8 @@ app.use(passport.session());
 
 app.use('/', pageRouter);
 app.use('/auth', authRouter);
+app.use('/upload', uploadRouter);
+app.use('/adminpage', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

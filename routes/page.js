@@ -13,7 +13,7 @@ router.get('/signIn', isNotLoggedIn, function(req, res, next) {
 });
 
 //회원가입 페이지
-router.get('/singUp', isNotLoggedIn, function(req, res, next) {
+router.get('/signUp', isNotLoggedIn, function(req, res, next) {
   res.render('test3');
 });
 

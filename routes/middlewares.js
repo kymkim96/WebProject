@@ -10,14 +10,15 @@ exports.isNotLoggedIn = (req, res, next) => {
     if(!req.isAuthenticated()) {
         next();
     } else {
+        //console.log(req.isAuthenticated())
         res.redirect('/');
     }
 }
 
 exports.checkAdminPermission = (req, res, next) => {
-    if(req.body.adminCode == '0922')
+    if(req.user.admincode === '0922')
         next();
     else {
-        alert('잘못된 접근입니다!!');
+        res.send('잘못된 접근입니다!!')
     }
 }

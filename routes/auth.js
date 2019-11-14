@@ -7,7 +7,7 @@ const { User } = require('../models');
 
 //회원가입 라우터
 router.post('/signUp', isNotLoggedIn, async (req, res, next) => {
-    const { email, nick, password, adminCode } = req.body;
+    const { email, nick, password, admincode } = req.body;
     try {
         const exUser = await User.findOne({where: {email}});
         if(exUser) {
@@ -19,7 +19,7 @@ router.post('/signUp', isNotLoggedIn, async (req, res, next) => {
             email: email,
             nick: nick,
             password: hash,
-            adminCode: adminCode,
+            admincode: admincode,
         });
         return res.redirect('/');
     } catch(error) {
