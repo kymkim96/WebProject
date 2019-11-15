@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mustacheExpress = require('mustache-express');  //html 렌더링
 var passport = require('passport');
 const session = require('express-session');
 require('dotenv').config();
@@ -13,6 +12,8 @@ const pageRouter = require('./routes/page');
 const authRouter = require('./routes/auth');
 const uploadRouter = require('./routes/upload');
 const adminRouter = require('./routes/adminpage');
+const actRouter = require('./routes/poster-act');
+const musicalRouter = require('./routes/poster-musical');
 var sequelize = require('./models').sequelize;
 const passportConfig = require('./passport');
 
@@ -23,8 +24,7 @@ passportConfig(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html', mustacheExpress());
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8001);
 
 app.use(logger('dev'));
@@ -48,6 +48,8 @@ app.use('/', pageRouter);
 app.use('/auth', authRouter);
 app.use('/upload', uploadRouter);
 app.use('/adminpage', adminRouter);
+app.use('/poster-act', actRouter);
+app.use('/poster-musical', musicalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

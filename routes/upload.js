@@ -35,7 +35,7 @@ router.post('/img', upload.single('img'), (req, res) => {
 
 // method: post, action: /upload/poster-act
 const upload2 = multer();
-router.post('/poster-act', checkAdminPermission, upload2.none(), async (req, res, next) => {
+router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, next) => {
     try {
          await Poster.create({
             content: req.body.content,  //제목
