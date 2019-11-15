@@ -30,7 +30,7 @@ const upload = multer({
 // method: post, action: /upload/img
 router.post('/img', upload.single('img'), (req, res) => {
     console.log(req.file);
-    res.json(`{url: /img/${req.file.filename}}`);
+    res.json({url: `/img/${req.file.filename}`});
 });
 
 // method: post, action: /upload/poster-act

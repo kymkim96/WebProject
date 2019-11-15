@@ -9,12 +9,12 @@ const { checkAdminPermission } = require('./middlewares');
 
 //관리자 페이지 출력
 router.get('/', checkAdminPermission, function(req, res) {
-    render('test2');
+    res.render('test2');
 })
 
 //관리자 페이지 포스터 업로드 폼
 router.get('/poster-upload', function(req, res) {
-    render('uploadform');
+    res.render('uploadform');
 })
 
 module.exports = router;
