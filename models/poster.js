@@ -1,11 +1,27 @@
 module.exports = (sequelize, DataTypes) => (
     sequelize.define('poster', {
         //작품 제목
-        content: {
+        title: {
             type: DataTypes.STRING(20),
             allowNull: false,
         },
-        img: {
+        introduction: {
+            type: DataTypes.STRING(200),
+            allowNull: false,
+        },
+        genre: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+        },
+        date: {
+            type: DataTypes.STRING(20),
+            allowNull: false
+        },
+        time: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+        },
+        thumbnail: {
             type: DataTypes.STRING(200),
             allowNull: false,
         },

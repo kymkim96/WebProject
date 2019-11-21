@@ -38,7 +38,7 @@ const upload2 = multer();
 router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, next) => {
     try {
          await Poster.create({
-            content: req.body.content,  //제목
+            title: req.body.content,  //제목
             img: req.body.url,  //업로드한 이미지
             classify: req.body.classify,    //연극인지 뮤지컬인지에 대한 분류
         });
