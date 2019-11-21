@@ -88,7 +88,9 @@ h1 {text-align:center; background-color:#FFB4B9; text-align: center;}
 
 	<!--포스터가 나오는 페이지를 불러옵니다..-->
 	<table class="jua" style="margin-left:auto; margin-right:auto; font-color:black; font-size:15px;" cellspacing="3px">
-		<% for (let i = ((pageId - 1) * 5); i < 5 * pageId; i++) { %>
+		<%
+		for (let i = ((pageId - 1) * 5); i < 5 * pageId; i++)
+		{ %>
 		<tr>
 			<% for (let j = i * 4; j < (5 * (i+1)); j++) { %>
 			<td>

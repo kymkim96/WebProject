@@ -16,5 +16,17 @@ router.get('/page/:id', async (req, res) => {
    }
 });
 
+router.get('/search', async (req, res) => {
+    try {
+       const post = await Poster.findOne({where: {title: req.query.title}});
+       res.render('act', {
+           posts: post,
+       })
+    } catch(error) {
+        console.error(error);
+        next(error);
+    }
+})
+
 module.exports = router;
 
