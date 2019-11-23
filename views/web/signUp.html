@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+		.signUp {
+ 			  position: relative;
+			   margin: 50px auto;
+			   width: 280px;
+			   padding: 33px 25px 29px;
+}
+		.loginImage{
+			   position: relative;
+ 			  margin: 50px auto;
+ 			  width: 280px;
+  			 padding: 33px 25px 29px;
+
+		}
+		ul li{
+			list-style: none;
+		}
+	</style>
+		<title>Whatch Theater</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script>
+			var patt = new RegExp("[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}");
+var res = patt.test( $("#tlno").val());
+
+if( !patt.test( $("#tlno").val()) ){
+    alert("전화번호를 정확히 입력하여 주십시오.");
+    return false;
+}
+</script>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper" class="signUp">
+							<!-- Form -->
+								<h1>Sign Up</h1>
+								<form method="post" action="#">
+									<div class="sginUpText">
+										<div>
+											<input type="text" name="name" id="name" value="" placeholder="Name" />
+										</div>
+										<p></p>
+										<div>
+											<input type="email" name="email" id="email" value="" placeholder="Email" />
+										</div>
+										<p></p>
+										<div>
+											<input type="text" name="ID" id="ID" value="ID" placeholder="ID" />
+										</div>
+										<p></p>
+										<div>
+											<input type="Password" name="Password" id="Password" placeholder="Password">
+										</div>
+										<p></p>
+										<!-- Break -->
+										<input style="width:280px; height:45px" type="tel" name="tlno" title="전화번호를 입력하세요." placeholder="010-0000-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
+										<p></p>
+											<div>
+												<select name="category" id="category">
+													<option value="">- favorite category of play -</option>
+													<option value="1">스릴러</option>
+													<option value="1">로맨스</option>
+													<option value="1">공포</option>
+													<option value="1">추리</option>
+												</select>
+											</div>
+										</div><p></p>
+										<div>
+											<input type="checkbox" id="copy" name="copy">
+											<label for="copy">이메일 수신 동의</label>
+										</div>
+										<div>
+											<input type="checkbox" id="human" name="human" checked>
+											<label for="human">개인정보처리약관 동의</label>
+										</div>
+										<p></p><p></p>
+										<div>
+											<ul>
+												<li><input style="float:left;" type="submit" value="Sign Up" /></li>
+												
+											</ul>
+										</div>
+										<!-- Break -->
+									</div>
+								</form>
+				</div>
+
+					<footer id="footer">
+						<p>Whatch Theater</p>
+					</footer>
+
+			</div>
+
+			<div id="bg"></div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
