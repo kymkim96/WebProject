@@ -22,6 +22,22 @@ module.exports = (sequelize, DataTypes) => (
             type: DataTypes.STRING(20),
             allowNull: true,
         },
+        phoneNumber: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+        },
+        category: {
+            type: DataTypes.STRING(20),
+            allowNull: true,
+        },
+        receiveMail: {
+            type: DataTypes.STRING(20),
+            allowNull: true,
+        },
+        admitPrivate: {
+            type: DataTypes.STRING(20),
+            allowNull: true,
+        },
     }, {
         timestamps: true,
         paranoid: true,

@@ -7,19 +7,19 @@ module.exports = (sequelize, DataTypes) => (
         },
         introduction: {
             type: DataTypes.STRING(200),
-            allowNull: false,
+            allowNull: true,
         },
         genre: {
             type: DataTypes.STRING(20),
-            allowNull: false,
+            allowNull: true,
         },
         date: {
             type: DataTypes.STRING(20),
-            allowNull: false
+            allowNull: true,
         },
         time: {
             type: DataTypes.STRING(20),
-            allowNull: false,
+            allowNull: true,
         },
         thumbnail: {
             type: DataTypes.STRING(200),

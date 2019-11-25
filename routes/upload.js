@@ -29,7 +29,7 @@ const upload = multer({
 
 // method: post, action: /upload/img
 router.post('/img', upload.single('img'), (req, res) => {
-    console.log(req.file);
+    //console.log(req.file);
     res.json({url: `/img/${req.file.filename}`});
 });
 
@@ -39,7 +39,7 @@ router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, ne
     try {
          await Poster.create({
             title: req.body.title,  //제목
-            img: req.body.url,  //업로드한 이미지
+            thumbnail: req.body.url,  //업로드한 이미지
             classify: req.body.classify,    //연극인지 뮤지컬인지에 대한 분류
         });
         res.redirect('/adminpage');

@@ -11,7 +11,7 @@
 input{font-size:16px; width:500px; padding:10px; border:2px; outline:none; float:left;}
 button{width:50px; height:100%; border:0px; background:#FFB4B9; outline:none; float:right; color:#ffffff;}
 
-			.wrappp{max-width: 900px; margin: 0 auto; float:center;}
+			.wrappp{max-width: 900px; margin 0 auto; float:center;}
 ul {
 	list-style:none;
 	float:left;
@@ -38,7 +38,7 @@ ul li a:hover, ul li a:focus {
 	background-color:white;
 }
 		</style>
-		<title>Whatch Theater-연극</title>
+		<title>Whatch Theater-뮤지컬</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -61,26 +61,27 @@ ul li a:hover, ul li a:focus {
 <header id="header" style="display:block;">
 	<div class="content">
 		<div class="inner">
-			<h1>연극</h1>
+			<h1>뮤지컬</h1>
 		</div>
 	</div>
 </header>
 
 <%
-	var isBreak = 0;
-	var pageCountMax = 25;	// 한 페이지 당 게시물 최대 수
-	var pageNumber = Math.ceil(pageCount / pageCountMax);
-	console.log(pageNumber);
- %>
-
+var isBreak = 0;
+var pageCountMax = 25;	// 한 페이지 당 게시물 최대 수
+var pageNumber = Math.ceil(pageCount / pageCountMax);
+console.log(pageNumber);
+%>
 
 <table class="wrappp" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
-	<tr>
+		<tr>
 		<td colspan="5">
-			<div style="height:50px; border:1px; border-radius:10px;float:center; background-color: white;">
-				<input type="text" placeholder="Search" style=" background: white; font-size:16px; width:90%; padding:10px; border:2px; outline:none; float:left; color:black;">
-				<button style="width:10%; height:100%; font-size:12px; border:0px; background:black; outline:none;"><p style="padding-right:10px">Search</p></button>
-			</div>
+		
+<div style="height:50px; border:1px; border-radius:10px;float:center; background-color: white;">
+		<input type="text" placeholder="Search" style=" background: white; font-size:16px; width:90%; padding:10px; border:2px; outline:none; float:left; color:black;">
+		<button style="width:10%; height:100%; font-size:12px; border:0px; background:black; outline:none;"><p style="padding-right:10px">Search</p></button>
+	</div>
+
 		</td>
 	</tr>
 	<%
@@ -106,14 +107,14 @@ ul li a:hover, ul li a:focus {
 				}
 			} %>
 		</tr>
-	<p></p>
+		<p></p>
 	<%
 		if(isBreak) break;
 	} %>
 </table>
 	<ul>
 		<% for(let i = 1 ; i <= pageNumber ; i++) { %>
-		<li><a href="/poster-act/page/<%= i %>"> <%= i %> </a></li>
+			<li><a href="/poster-act/page/<%= i %>"> <%= i %> </a></li>
 		<% } %>
 	</ul>
 				<!-- Footer -->
