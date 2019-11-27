@@ -91,410 +91,95 @@ table{
 	var isBreak = 0;
 	var pageCountMax = 25;	// 한 페이지 당 게시물 최대 수
 	var pageNumber = Math.ceil(pageCount / pageCountMax);
+	var posterArray = [];
  %>
-
-
-
 
 <br><br><br><br><br>
 <table style="width:900px;">
+	<% for (let i = ((pageId - 1) * 5); i < 5 * pageId; i++) {
+		var index = 0;
+	%>
 	<tr>
+		<% for (let j = i * 5; j < (5 * (i+1)); j++) {
+			if(!posts[j]) {
+				isBreak = 1;
+				posterArray[index++] = {
+					title: '',
+					thumbnail: '',
+				};
+			} else {
+				posterArray[index++] = {
+					title: posts[j].title,
+					thumbnail: posts[j].thumbnail,
+				}
+			}
+		} %>
 		<td align="center">
-			<span><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg">
-		</span>
-		<span>
-			<a href="#">만리향</a>
-		</span>
-	</td>
-	<td align="center">
-				<span><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg">
-		</span>
-		<span>
-			<a href="#">만리향</a>
-		</span>
-	</td>
-	<td align="center">
-				<span><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg">
-		</span>
-		<span>
-			<a href="#">만리향</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		<!--
-			src=""큰 따옴표 안에 사진 경로 지정 혹은 링크
-		-->
-		</span>
-		<span>
-			<a href="#">
-		<!--
-			여기 이 자리에 영화/뮤지컬 제목넣고, 윗 라인 #자리에는 글자 누르면 넘어갈 링크 주소
-		-->
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-		<!--
-			한 행에 5개가 넘어가서 다음 줄로 바뀜 줄 바뀌는 태그는 <tr>
-		-->
-	<tr>
+			<span>
+				<img src= <%= posterArray[0].thumbnail %> >
+			</span>
+			<span>
+				<a href="#">
+					<%= posterArray[0].title %>
+				</a>
+			</span>
+		</td>
 		<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-</tr>
-<!--여기서부터 3번재줄-->
-	<tr>
+			<span>
+				<img src= <%= posterArray[1].thumbnail %> >
+			</span>
+			<span>
+				<a href="#">
+					<%= posterArray[1].title %>
+				</a>
+			</span>
+		</td>
 		<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-</tr>
-
-<!--4번째줄-->
-	<tr>
+			<span>
+				<img src= <%= posterArray[2].thumbnail %> >
+			</span>
+			<span>
+				<a href="#">
+					<%= posterArray[2].title %>
+				</a>
+			</span>
+		</td>
 		<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-</tr>
-
-
-
-<!--마지막 5번째줄-->
-<tr>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<img src="">
-		</span>
-		<span>
-			<a href="#">
-				
-			</a>
-		</span>
-	</td>
-</tr>
+			<span>
+				<img src= <%= posterArray[3].thumbnail %> >
+			</span>
+			<span>
+				<a href="#">
+					<%= posterArray[3].title %>
+				</a>
+			</span>
+		</td>
+		<td align="center">
+			<span>
+				<img src= <%= posterArray[4].thumbnail %> >
+			</span>
+			<span>
+				<a href="#">
+					<%= posterArray[4].title %>
+				</a>
+			</span>
+		</td>
+	</tr>
+	<%
+		if(isBreak) break;
+	} %>
 </table>
 
-
-
-
-<!--
-	각 페이지에서 게시글이 5개 미만일 때 테이블 폼을 따로 정의했다
-	else 블록에서는 게시글이 5개 이상일 때부터 폼이 상단에 게시글 폼에 맞춰
-	배열이 갖춰지기 때문에 원래 테이블 폼으로 구성한다
--->
-<!--
-				<br><br><br><br><br>
-				<table class="wrappp" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
-					<tr>
-						<td align="center" style="width:125px; height:500px;">
-							가나다
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							라마바
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							사아자
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							차카타
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							파하ㅏㅏ
-						</td>
-					</tr>
-					<tr>
-						<td align="center" style="width:125px; height:500px;">
-							에이비씨디
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							이에프지
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							에이치아이
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							제이케이
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							엘엠엔오피
-						</td>
-					</tr>
-					<tr>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-					</tr>
-					<tr>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-					</tr>
-					<tr>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-						<td align="center" style="width:125px; height:500px;">
-							&nbsp
-						</td>
-					</tr>
-				</table>
---><!-- 예전 테이블 19.11.27 수정 이전
-				<br><br><br><br><br>
-				<table class="wrappp" width="130px" height="250px" float="left" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
-					<tr>
-						<td float="left"><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" width="125" height="200"></td>
-					</tr>
-					<tr align="center">
-						<td><a href="#">만리향</a></td>
-					</tr>
-				</table>
-				<table class="wrappp" width="130px" height="250px" float="left" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
-					<tr>
-						<td float="left"><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" width="125" height="200"></td>
-					</tr>
-					<tr align="center">
-						<td><a href="#">만리향</a></td>
-					</tr>
-				</table>
-
--->
-
-
-
-
 <br>
-
-				<div style="height:50px; border:1px; border-radius:10px; background-color: white;">
-				<input type="text" placeholder="Search" style=" background: white; font-size:16px; width:800px; height: 50px; padding:10px; border:2px; outline:none; float:left; color:black;">
-				<button style="vertical-align:center; width:100px; height:50px; font-size:12px; border:0px; background:black; outline:none;">Search</button>
-			</div>
+<!-- 검색창 -->
+<div style="height:50px; border:1px; border-radius:10px; background-color: white;">
+	<input type="text" placeholder="Search" style=" background: white; font-size:16px; width:800px; height: 50px; padding:10px; border:2px; outline:none; float:left; color:black;">
+	<button style="vertical-align:center; width:100px; height:50px; font-size:12px; border:0px; background:black; outline:none;">Search</button>
+</div>
 
 <br><br><br><br>
 
+<!-- 페이지 리스트 번호 -->
 	<ul>
 		<% for(let i = 1 ; i <= pageNumber ; i++) { %>
 		<li><a href="/poster-act/page/<%= i %>"> <%= i %> </a></li>
