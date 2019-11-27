@@ -30,6 +30,7 @@ app.set('port', process.env.PORT || 8001);
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/poster-act/page', express.static(path.join(__dirname, 'public')));
+app.use('/poster-act/search', express.static(path.join(__dirname, 'public')));
 app.use('/poster-musical/page', express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
