@@ -116,7 +116,9 @@ table{
 		} %>
 		<td align="center">
 			<span>
+				<% if(posterArray[0].thumbnail != '') { %>
 				<img src= <%= posterArray[0].thumbnail %> >
+				<% } %>
 			</span>
 			<span>
 				<a href="#">
@@ -126,7 +128,9 @@ table{
 		</td>
 		<td align="center">
 			<span>
-				<img src= <%= posterArray[1].thumbnail %> >
+				<% if(posterArray[1].thumbnail != '') { %>
+					<img src= <%= posterArray[1].thumbnail %> >
+				<% } %>
 			</span>
 			<span>
 				<a href="#">
@@ -136,7 +140,9 @@ table{
 		</td>
 		<td align="center">
 			<span>
-				<img src= <%= posterArray[2].thumbnail %> >
+				<% if(posterArray[2].thumbnail != '') { %>
+					<img src= <%= posterArray[2].thumbnail %> >
+				<% } %>
 			</span>
 			<span>
 				<a href="#">
@@ -146,7 +152,9 @@ table{
 		</td>
 		<td align="center">
 			<span>
-				<img src= <%= posterArray[3].thumbnail %> >
+				<% if(posterArray[3].thumbnail != '') { %>
+					<img src= <%= posterArray[3].thumbnail %> >
+				<% } %>
 			</span>
 			<span>
 				<a href="#">
@@ -156,7 +164,9 @@ table{
 		</td>
 		<td align="center">
 			<span>
-				<img src= <%= posterArray[4].thumbnail %> >
+				<% if(posterArray[4].thumbnail != '') { %>
+					<img src= <%= posterArray[4].thumbnail %> >
+				<% } %>
 			</span>
 			<span>
 				<a href="#">
@@ -173,8 +183,8 @@ table{
 <br>
 <!-- 검색창 -->
 <div style="height:50px; border:1px; border-radius:10px; background-color: white;">
-	<input type="text" placeholder="Search" style=" background: white; font-size:16px; width:800px; height: 50px; padding:10px; border:2px; outline:none; float:left; color:black;">
-	<button style="vertical-align:center; width:100px; height:50px; font-size:12px; border:0px; background:black; outline:none;">Search</button>
+	<input type="text" name="title" placeholder="Search" style=" background: white; font-size:16px; width:800px; height: 50px; padding:10px; border:2px; outline:none; float:left; color:black;">
+	<button style="vertical-align:center; width:100px; height:50px; font-size:12px; border:0px; background:black; outline:none;"><a href="/poster-act/search/1">Search</a></button>
 </div>
 
 <br><br><br><br>
