@@ -70,55 +70,151 @@ ul li a:hover, ul li a:focus {
 	var isBreak = 0;
 	var pageCountMax = 25;	// 한 페이지 당 게시물 최대 수
 	var pageNumber = Math.ceil(pageCount / pageCountMax);
-	console.log(pageNumber);
+	/*
+	게시물이 페이지에서 5개 미만일 때의 조건 변수
+	1 <= pageCount <= 4
+	26 <= pageCount <= 29
+	...
+	 */
+	var startPage = (1 + (25 * (pageId - 1)));
+	var endPage = (4 + ( 25 * (pageId - 1)));
  %>
 
+<!--
+	각 페이지에서 게시글이 5개 미만일 때 테이블 폼을 따로 정의했다
+	else 블록에서는 게시글이 5개 이상일 때부터 폼이 상단에 게시글 폼에 맞춰
+	배열이 갖춰지기 때문에 원래 테이블 폼으로 구성한다
+-->
+<!--
+				<br><br><br><br><br>
+				<table class="wrappp" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
+					<tr>
+						<td align="center" style="width:125px; height:500px;">
+							가나다
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							라마바
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							사아자
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							차카타
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							파하ㅏㅏ
+						</td>
+					</tr>
+					<tr>
+						<td align="center" style="width:125px; height:500px;">
+							에이비씨디
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							이에프지
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							에이치아이
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							제이케이
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							엘엠엔오피
+						</td>
+					</tr>
+					<tr>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+					</tr>
+					<tr>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+					</tr>
+					<tr>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+						<td align="center" style="width:125px; height:500px;">
+							&nbsp
+						</td>
+					</tr>
+				</table>
+-->
+				<br><br><br><br><br>
+				<table class="wrappp" width="130px" height="250px" float="left" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
+					<tr>
+						<td float="left"><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" width="125" height="200"></td>
+					</tr>
+					<tr align="center">
+						<td><a href="#">만리향</a></td>
+					</tr>
+				</table>
+				<table class="wrappp" width="130px" height="250px" float="left" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
+					<tr>
+						<td float="left"><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" width="125" height="200"></td>
+					</tr>
+					<tr align="center">
+						<td><a href="#">만리향</a></td>
+					</tr>
+				</table>
 
-<table class="wrappp" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
-	<tr>
-		<td colspan="5">
-			<div style="height:50px; border:1px; border-radius:10px;float:center; background-color: white;">
-				<input type="text" placeholder="Search" style=" background: white; font-size:16px; width:90%; padding:10px; border:2px; outline:none; float:left; color:black;">
-				<button style="width:10%; height:100%; font-size:12px; border:0px; background:black; outline:none;"><p style="padding-right:10px">Search</p></button>
+
+
+
+
+
+<br>
+
+				<div style="height:50px; border:1px; border-radius:10px; background-color: white;">
+				<input type="text" placeholder="Search" style=" background: white; font-size:16px; width:800px; height: 50px; padding:10px; border:2px; outline:none; float:left; color:black;">
+				<button style="vertical-align:center; width:100px; height:50px; font-size:12px; border:0px; background:black; outline:none;">Search</button>
 			</div>
-		</td>
-	</tr>
-	<%
-	for (let i = ((pageId - 1) * 5); i < 5 * pageId; i++)
-	{ %>
-		<tr>
-			<% for (let j = i * 4; j < (5 * (i+1)); j++) { %>
-				<td>
-					<table cellspacing="8.5px">
-						<tr>
-							<td><img src= <%= posts[j].thumbnail %> width="125" height="200"></td>
-						</tr>
-						<tr align="center">
-							<td><a href="#" style="color:black; text-decoration: none;"><%= posts[j].title %></a></td>
-						</tr>
-					</table>
-				</td>
-				<!-- 다음 포스터가 없으면 불러오기를 중단합니다 -->
-			<%
-				if(!posts[j + 1]) {
-					isBreak = 1;
-					break;
-				}
-			} %>
-		</tr>
-	<p></p>
-	<%
-		if(isBreak) break;
-	} %>
-</table>
+
+<br><br><br><br>
+
 	<ul>
 		<% for(let i = 1 ; i <= pageNumber ; i++) { %>
 		<li><a href="/poster-act/page/<%= i %>"> <%= i %> </a></li>
 		<% } %>
 	</ul>
 				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">Whatch Theater</p>
+					<footer id="footer" style="font-size:18px;">
+						Whatch Theater
 					</footer>
 
 			</div>

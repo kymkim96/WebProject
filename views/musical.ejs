@@ -66,6 +66,41 @@ ul li a:hover, ul li a:focus {
 	</div>
 </header>
 
+				<table class="wrappp" style="text-align: left; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
+					<%
+					for (let i = ((pageId - 1) * 5); i < 5 * pageId; i++) { %>
+						<tr>
+							<% for (let j = i * 5; j < (5 * (i+1)); j++) {
+							%>
+
+								<td>
+									<div style="float:left;">
+										<table style="table-layout:fixed; width:185px; height:400px; display:inline;" cellspacing="8.5px">
+											<tr>
+												<td><img src= <%= posts[j].thumbnail %> width="125" height="200"></td>
+											</tr>
+											<tr align="center">
+												<td><a href="#" style="color:black; text-decoration: none;"><%= posts[j].title %></a></td>
+											</tr>
+										</table>
+									</div>
+								</td>
+
+							<%
+								if(!posts[j + 1]) {
+									isBreak = 1;
+									break;
+								}
+							} %>
+						</tr>
+						<p></p>
+					<%
+						if(isBreak) break;
+					}
+					}%>
+
+				</table>
+
 <%
 var isBreak = 0;
 var pageCountMax = 25;	// 한 페이지 당 게시물 최대 수

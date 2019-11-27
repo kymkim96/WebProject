@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { Poster } = require('../models');
-const { checkAdminPermission } = require('./middlewares');
+const { checkAdminPermission, isLoggedIn } = require('./middlewares');
 
 fs.readdir('uploads', (error) => {
     if(error) {
@@ -28,12 +28,14 @@ const upload = multer({
 });
 
 // method: post, action: /upload/img
+// 이미지 첨부 라우터
 router.post('/img', upload.single('img'), (req, res) => {
     //console.log(req.file);
     res.json({url: `/img/${req.file.filename}`});
 });
 
 // method: post, action: /upload/poster-act
+// 연극 포스터 업로드 라우터
 const upload2 = multer();
 router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, next) => {
     try {
@@ -43,6 +45,21 @@ router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, ne
             classify: req.body.classify,    //연극인지 뮤지컬인지에 대한 분류
         });
         res.redirect('/adminpage');
+    } catch(error) {
+        console.error(error);
+        next(error);
+    }
+});
+
+//리뷰 업로드 라우터
+
+router.post('/review-upload/:title', isLoggedIn, upload2.none(), async (req, res, next) => {
+    try {
+        const review = await Review.create({
+
+        });
+        const post = await Poster.findOne({ where: {title: req.params.title}});
+        await post.addReview(review);
     } catch(error) {
         console.error(error);
         next(error);
