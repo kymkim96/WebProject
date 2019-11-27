@@ -225,8 +225,10 @@ h1{color:white; line-height: 75px; float:left;}
 <br>
 <!-- 검색창 -->
 <div style="height:50px; border:1px; border-radius:10px; background-color: white;">
-	<input type="text" name="title" placeholder="Search" style=" background: white; font-size:16px; width:800px; height: 50px; padding:10px; border:2px; outline:none; float:left; color:black;">
-	<button style="vertical-align:center; width:100px; height:50px; font-size:12px; border:0px; background:black; outline:none;"><a href="/poster-act/search/1">Search</a></button>
+	<form method="get" action="/poster-act/search/1">
+		<input type="text" name="title" placeholder="Search" style=" background: white; font-size:16px; width:800px; height: 50px; padding:10px; border:2px; outline:none; float:left; color:black;">
+		<button type="submit" style="vertical-align:center; width:100px; height:50px; font-size:12px; border:0px; background:black; outline:none;">Search</button>
+	</form>
 </div>
 
 <br><br><br><br>
