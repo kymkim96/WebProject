@@ -22,10 +22,11 @@ router.get('/search/:id', async (req, res, next) => {
     try {
        const posts = await Poster.findAll({where: {title: req.query.title}});
        const postCount = await Poster.findAndCountAll({where: {title: req.query.title}});
+       console.log(postCount);
        res.render('act', {
            posts: posts,
            pageId: req.params.id,
-           pageCount: postCount,
+           pageCount: postCount.count,
        });
     } catch(error) {
         console.error(error);
