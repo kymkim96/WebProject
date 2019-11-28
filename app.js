@@ -31,6 +31,8 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/poster-act/page', express.static(path.join(__dirname, 'public')));
 app.use('/poster-act/search', express.static(path.join(__dirname, 'public')));
+app.use('/poster-act/detail', express.static(path.join(__dirname, 'public')));
+app.use('/poster-act/review-upload', express.static(path.join(__dirname, 'public')));
 app.use('/poster-musical/page', express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());

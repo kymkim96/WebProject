@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => (
             type: DataTypes.STRING(200),
             allowNull: true,
         },
-        like: {
+        rank: {
             type: DataTypes.INTEGER,
             allowNull: true,
         }

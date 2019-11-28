@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const { Poster } = require('../models');
+const { Poster, Review } = require('../models');
 const { checkAdminPermission, isLoggedIn } = require('./middlewares');
 
 fs.readdir('uploads', (error) => {
@@ -53,13 +53,16 @@ router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, ne
 
 //리뷰 업로드 라우터
 
-router.post('/review-upload/:title', isLoggedIn, upload2.none(), async (req, res, next) => {
+router.post('/review-upload', isLoggedIn, upload2.none(), async (req, res, next) => {
     try {
+        console.log(req.body);
         const review = await Review.create({
-
+            content: req.body.content,
+            img: req.body.url,
         });
-        const post = await Poster.findOne({ where: {title: req.params.title}});
+        const post = await Poster.findOne({ where: {title: req.body.title}});
         await post.addReview(review);
+        res.redirect(`/poster-act/detail/1?title=${req.body.title}`);
     } catch(error) {
         console.error(error);
         next(error);

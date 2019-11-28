@@ -150,46 +150,47 @@ h1{color:white; line-height: 75px; float:left;}
 
 
 
+<form action="/upload/review-upload" method="post" enctype="multipart/form-data">
+	<table class="wrappp" style="width: 800px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
+		<tr  style="height: 50px;">
+			<td align="center">
+				<div class="starRev">
+	  <span class="starR on">별1</span>
+	  <span class="starR">별2</span>
+	  <span class="starR">별3</span>
+	  <span class="starR">별4</span>
+	  <span class="starR">별5</span>
+	</div>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:900px; height: 400px;">
+				<textarea style="width:900px; height: 400px;" name="content">
 
-<table class="wrappp" style="width: 800px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
-	<tr  style="height: 50px;">
-		<td align="center">
-			<div class="starRev">
-  <span class="starR on">별1</span>
-  <span class="starR">별2</span>
-  <span class="starR">별3</span>
-  <span class="starR">별4</span>
-  <span class="starR">별5</span>
-</div>
-		</td>
-	</tr>
-	<tr>
-		<td style="width:900px; height: 400px;">
-		<textarea style="width:900px; height: 400px;">
-			
-		</textarea>
-
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="file_input">
-				<input type="text" readonly="readonly" id="file_route">
-				<label>
-					파일 업로드
-					<input type="file" onchange="javascript:documnet.getElementById('file_route').value=this.value">
-				</label>
-			</div>
-		</td>
-	</tr>
-</table>
+				</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="file_input">
+					<input id="url" type="text" name="url" readonly="readonly" id="file_route">
+					<input type="hidden" name="title" value="<%= post.title %>">
+					<label>
+						파일 업로드
+						<input id="img" type="file" accept="image/*">
+					</label>
+				</div>
+			</td>
+		</tr>
+	</table>
 
 
-<div style="float;right;">
-		<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none;">등록
+	<div style="float;right;">
+		<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none;">
+			등록
 		</button>
-</div>
-
+	</div>
+</form>
 
 				<!-- Footer -->
 					<footer id="footer">
@@ -209,11 +210,32 @@ h1{color:white; line-height: 75px; float:left;}
 			<script src="assets/js/main.js"></script>
 			<script type="text/javascript">
 				$('.starRev span').click(function(){
-  $(this).parent().children('span').removeClass('on');
-  $(this).addClass('on').prevAll('span').addClass('on');
-  return false;
-});
-</script>
+			  	$(this).parent().children('span').removeClass('on');
+			  	$(this).addClass('on').prevAll('span').addClass('on');
+			  	return false;
+			});
+			</script>
+		//이미지 요청 전송
+			<script>
+				if(document.getElementById('img')){
+					document.getElementById('img').addEventListener('change', function(e) {
+						var formData = new FormData();
+						console.log(this, this.files);
+						formData.append('img', this.files[0]);
+						var xhr = new XMLHttpRequest();
+						xhr.onload = function() {
+							if (xhr.status === 200) {
+								var url = JSON.parse(xhr.responseText).url;
+								document.getElementById('url').value = url;
+							} else {
+								console.error(xhr.responseText);
+							}
+						};
+						xhr.open('POST', '/upload/img');
+						xhr.send(formData);
+					});
+				}
+			</script>
 
 	</body>
 </html>

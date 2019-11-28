@@ -163,7 +163,7 @@ h1{color:white; line-height: 75px; float:left;}
 				<% } %>
 			</span>
 			<span>
-				<a href="#">
+				<a href="/poster-act/detail/1?title=<%= posterArray[0].title %>">
 					<%= posterArray[0].title %>
 				</a>
 			</span>
@@ -174,10 +174,16 @@ h1{color:white; line-height: 75px; float:left;}
 					<img src= <%= posterArray[1].thumbnail %> >
 				<% } %>
 			</span>
-			<span>
-				<a href="#">
+			<span onclick="
+				$.ajax({
+					url: '/poster-act/detail/1',
+					dataType: 'json',
+					type: 'GET',
+					data: { title: posterArray[1].title },
+					success: function(result) {}
+				});
+			">
 					<%= posterArray[1].title %>
-				</a>
 			</span>
 		</td>
 		<td align="center">
@@ -186,10 +192,16 @@ h1{color:white; line-height: 75px; float:left;}
 					<img src= <%= posterArray[2].thumbnail %> >
 				<% } %>
 			</span>
-			<span>
-				<a href="#">
+			<span onclick="
+				$.ajax({
+					url: '/poster-act/detail/1',
+					dataType: 'json',
+					type: 'GET',
+					data: { title: posterArray[2].title },
+					success: function(result) {}
+				});
+			">
 					<%= posterArray[2].title %>
-				</a>
 			</span>
 		</td>
 		<td align="center">
@@ -198,10 +210,16 @@ h1{color:white; line-height: 75px; float:left;}
 					<img src= <%= posterArray[3].thumbnail %> >
 				<% } %>
 			</span>
-			<span>
-				<a href="#">
+			<span onclick="
+				$.ajax({
+					url: '/poster-act/detail/1',
+					dataType: 'json',
+					type: 'GET',
+					data: { title: posterArray[3].title },
+					success: function(result) {}
+				});
+			">
 					<%= posterArray[3].title %>
-				</a>
 			</span>
 		</td>
 		<td align="center">
@@ -210,10 +228,16 @@ h1{color:white; line-height: 75px; float:left;}
 					<img src= <%= posterArray[4].thumbnail %> >
 				<% } %>
 			</span>
-			<span>
-				<a href="#">
+			<span onclick="
+				$.ajax({
+					url: '/poster-act/detail/1',
+					dataType: 'json',
+					type: 'GET',
+					data: { title: posterArray[4].title },
+					success: function(result) {}
+				});
+			">
 					<%= posterArray[4].title %>
-				</a>
 			</span>
 		</td>
 	</tr>
@@ -255,6 +279,10 @@ h1{color:white; line-height: 75px; float:left;}
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				$(document).ready(function() {
 
+				})
+			</script>
 	</body>
 </html>

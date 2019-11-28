@@ -129,21 +129,22 @@ h1{color:white; line-height: 75px; float:left;}
 
 <table class="wrappp" style="width: 800px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
 	<tr>
-		<td align="center" rowspan="4" style="width:35%; margin-top: auto; margin-bottom: auto;"><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" width="180px" height="250px">
+		<td align="center" rowspan="4" style="width:35%; margin-top: auto; margin-bottom: auto;">
+			<img src="<%= post.thumbnail %>" height="250px">
 		</td>
 	</tr>
 	<tr>
 		<td>
-			제목
+			<%= post.title %>
 		</td>
 	</tr>
 	<tr>
 		<td><!--별점 writeReview에서 매긴거 평균내서 그 평균만큼 별 이미지 나오는거 반복시키면됨-->
-			<span><img style="width:30px; height:30px;" src="star.png"></span>
-			<span><img style="width:30px; height:30px;" src="star.png"></span>
-			<span><img style="width:30px; height:30px;" src="star.png"></span>
-			<span><img style="width:30px; height:30px;" src="star.png"></span>
-			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
+			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
+			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
+			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
+			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
 			( /5)
 			<!--별점 평균낸거 넣으면 됨-->
 			<br>
@@ -188,10 +189,20 @@ h1{color:white; line-height: 75px; float:left;}
 		</td>
 	</tr>
 	<tr>
-		<td colspan="3"><a name="showReview">
-			<br><h2>리뷰</h2></a><br><br>
-		writeReview에서 쓴 리뷰들 보여주기
-	<button style="float:right; vertical-align: :center; width:130px; height:50px; font-size:18px; border:0px; background:black; outline:none;"><a href="writeReview.html">리뷰 등록</a>
+		<td colspan="3">
+			<a name="showReview">
+			<br>
+				<h2>
+					<%= reviews[0].content %>
+					<%= reviews[1].content %>
+				</h2>
+			</a>
+			<br>
+			<br>
+		<div style="background-color: rgba(0, 0, 0, 0.6)">
+
+		</div>
+		<button style="float:right; vertical-align: :center; width:130px; height:50px; font-size:18px; border:0px; background:black; outline:none;"><a href="/poster-act/review-upload?title=<%= post.title %>"> 리뷰 등록 </a>
 		</button>
 	</td>
 	</tr>

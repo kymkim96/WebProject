@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Poster } = require('../models');
+const { Poster, Review } = require('../models');
 
 //연극 페이지 로딩
 router.get('/page/:id', async (req, res, next) => {
@@ -34,17 +34,35 @@ router.get('/search/:id', async (req, res, next) => {
     }
 });
 
-router.get('/detail/:title', async (req, res, next) => {
+//viewAct : 연극 상세 페이지
+router.get('/detail/:id', async (req, res, next) => {
     try {
-        const post = await Poster.findOne({})
-        res.render('test2', {
-
-        })
+        const post = await Poster.findOne({ where: { title: req.query.title }});
+        const reviews = await post.getReviews();
+        res.render('viewAct', {
+            post: post,
+            pageId: req.params.id,
+            reviews: reviews,
+            pageCount: reviews.length,
+        });
     } catch(error) {
         console.error(error);
         next(error)
     }
 });
+
+//writeReview : 연극 리뷰 업로드 페이지
+router.get('/review-upload', async (req, res, nex) => {
+    try {
+        const post = await Poster.findOne({where: {title: req.query.title}});
+        res.render('writeReview', {
+            post: post,
+        })
+    } catch(error) {
+        console.error(error);
+        next(error);
+    }
+})
 
 module.exports = router;
 
