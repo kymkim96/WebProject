@@ -39,11 +39,17 @@ router.post('/img', upload.single('img'), (req, res) => {
 const upload2 = multer();
 router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, next) => {
     try {
-         await Poster.create({
+         const post = await Poster.create({
             title: req.body.title,  //제목
             thumbnail: req.body.url,  //업로드한 이미지
             classify: req.body.classify,    //연극인지 뮤지컬인지에 대한 분류
         });
+         //default review 생성, 리뷰 안내 글
+         const review = await Review.create({
+             content: '이곳은 리뷰 게시판입니다',
+             rank: 0,
+         });
+         await post.addReview(review);
         res.redirect('/adminpage');
     } catch(error) {
         console.error(error);
@@ -59,6 +65,7 @@ router.post('/review-upload', isLoggedIn, upload2.none(), async (req, res, next)
         const review = await Review.create({
             content: req.body.content,
             img: req.body.url,
+            rank: req.body.star-input,
         });
         const post = await Poster.findOne({ where: {title: req.body.title}});
         await post.addReview(review);

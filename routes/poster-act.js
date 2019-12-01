@@ -18,6 +18,7 @@ router.get('/page/:id', async (req, res, next) => {
    }
 });
 
+//검색 기능
 router.get('/search/:id', async (req, res, next) => {
     try {
        const posts = await Poster.findAll({where: {title: req.query.title}});
@@ -37,8 +38,12 @@ router.get('/search/:id', async (req, res, next) => {
 //viewAct : 연극 상세 페이지
 router.get('/detail/:id', async (req, res, next) => {
     try {
-        const post = await Poster.findOne({ where: { title: req.query.title }});
+        const post = await Poster.findOne({ where: { id: req.query.id }});
+        //console.log(post);
         const reviews = await post.getReviews();
+        if( !reviews ) {
+            console.log(1);
+        }
         res.render('viewAct', {
             post: post,
             pageId: req.params.id,

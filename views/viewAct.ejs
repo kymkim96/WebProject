@@ -123,8 +123,14 @@ h1{color:white; line-height: 75px; float:left;}
 </header>
 <br><br><br><br><br>
 
-
-
+<%
+	var rankAvg = 0;
+	for( let review of reviews ) {
+	rankAvg += review.rank;
+	}
+	rankAvg /= reviews.length;
+	rankAvg = Math.ceil(rankAvg);
+%>
 
 
 <table class="wrappp" style="width: 800px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
@@ -140,12 +146,10 @@ h1{color:white; line-height: 75px; float:left;}
 	</tr>
 	<tr>
 		<td><!--별점 writeReview에서 매긴거 평균내서 그 평균만큼 별 이미지 나오는거 반복시키면됨-->
+			<% for( let i = 0 ; i < rankAvg ; i++ ) { %>
 			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
-			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
-			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
-			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
-			<span><img style="width:30px; height:30px;" src="images/star.png"></span>
-			( /5)
+			<% } %>
+			(<%= rankAvg %> / 5)
 			<!--별점 평균낸거 넣으면 됨-->
 			<br>
 
@@ -194,7 +198,6 @@ h1{color:white; line-height: 75px; float:left;}
 			<br>
 				<h2>
 					<%= reviews[0].content %>
-					<%= reviews[1].content %>
 				</h2>
 			</a>
 			<br>

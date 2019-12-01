@@ -148,11 +148,13 @@ h1{color:white; line-height: 75px; float:left;}
 				posterArray[index++] = {
 					title: '',
 					thumbnail: '',
+                    id: '',
 				};
 			} else {
 				posterArray[index++] = {
 					title: posts[j].title,
 					thumbnail: posts[j].thumbnail,
+                    id: posts[j].id,
 				}
 			}
 		} %>
@@ -163,7 +165,7 @@ h1{color:white; line-height: 75px; float:left;}
 				<% } %>
 			</span>
 			<span>
-				<a href="/poster-act/detail/1?title=<%= posterArray[0].title %>">
+				<a href="/poster-act/detail/1?id=<%= posterArray[0].id %>">
 					<%= posterArray[0].title %>
 				</a>
 			</span>
@@ -174,16 +176,10 @@ h1{color:white; line-height: 75px; float:left;}
 					<img src= <%= posterArray[1].thumbnail %> >
 				<% } %>
 			</span>
-			<span onclick="
-				$.ajax({
-					url: '/poster-act/detail/1',
-					dataType: 'json',
-					type: 'GET',
-					data: { title: posterArray[1].title },
-					success: function(result) {}
-				});
-			">
+			<span>
+                <a href="/poster-act/detail/1?id=<%= posterArray[1].id %>">
 					<%= posterArray[1].title %>
+                </a>
 			</span>
 		</td>
 		<td align="center">
