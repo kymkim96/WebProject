@@ -9,6 +9,10 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/introduce', isNotLoggedIn, function(req, res, next) {
+  res.render('intro');
+});
+
 //로그인 페이지
 router.get('/signIn', isNotLoggedIn, function(req, res, next) {
   res.render('log');

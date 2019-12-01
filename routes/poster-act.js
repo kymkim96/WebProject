@@ -41,9 +41,6 @@ router.get('/detail/:id', async (req, res, next) => {
         const post = await Poster.findOne({ where: { id: req.query.id }});
         //console.log(post);
         const reviews = await post.getReviews();
-        if( !reviews ) {
-            console.log(1);
-        }
         res.render('viewAct', {
             post: post,
             pageId: req.params.id,
@@ -67,7 +64,7 @@ router.get('/review-upload', async (req, res, nex) => {
         console.error(error);
         next(error);
     }
-})
+});
 
 module.exports = router;
 

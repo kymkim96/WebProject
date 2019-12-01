@@ -3,7 +3,7 @@ const router = express.Router();
 const { Poster, Review } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
-//연극 포스터 페이지 출력
+//뮤지컬 포스터 페이지 출력
 router.get('/page/:id', async (req, res, next) => {
     try {
         const posts = await Poster.findAll({where: {classify: 'musical'}});
@@ -23,9 +23,11 @@ router.get('/page/:id', async (req, res, next) => {
 router.get('/search/:id', async (req, res, next) => {
     try {
         const post = await Poster.findAll({where: {title: req.query.title}});
+        const postCount = await Poster.findAndCountAll({where: {title: req.query.title}});
         res.render('musical', {
             posts: post,
-            pageId: req.params.id
+            pageId: req.params.id,
+            pageCount: postCount.count,
         })
     } catch(error) {
         console.error(error);
@@ -34,9 +36,9 @@ router.get('/search/:id', async (req, res, next) => {
 });
 
 //연극 상세 페이지 및 리뷰 보이기
-router.get('/detail/:title/:id', async (req, res, next) => {
+router.get('/detail/:id', async (req, res, next) => {
     try {
-        const post = await Poster.findOne({ where: { title: req.params.title }});
+        const post = await Poster.findOne({ where: { id: req.query.id }});
         res.render('test2', {
             post: post,
         })
@@ -47,8 +49,8 @@ router.get('/detail/:title/:id', async (req, res, next) => {
 });
 
 //연극 업로드 폼 로딩
-router.get('/review-upload/:title', isLoggedIn, async (req, res, next) => {
-    const post = await Poster.findOne({ where: {title: req.params.title }});
+router.get('/review-upload', isLoggedIn, async (req, res, next) => {
+    const post = await Poster.findOne({ where: {id: req.query.id }});
     res.render('test2', {
         post: post,
     })

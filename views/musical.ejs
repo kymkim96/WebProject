@@ -12,6 +12,22 @@ input{font-size:16px; width:500px; padding:10px; border:2px; outline:none; float
 button{width:50px; height:100%; border:0px; background:#FFB4B9; outline:none; float:right; color:#ffffff;}
 
 			.wrappp{max-width: 900px; margin 0 auto; float:center;}
+
+img{
+	width:125px;
+	height:200px;
+}
+
+span{
+	display:table-row;
+	text-align: center;
+}
+
+td{
+	width:150px;
+	height:220px;
+}
+
 ul {
 	list-style:none;
 	float:left;
@@ -37,6 +53,31 @@ ul li a:hover, ul li a:focus {
 	border:1px solid white;
 	background-color:white;
 }
+
+table{
+	border:0;
+}
+
+
+li{list-style:none;}
+a{text-decoration: none;}
+
+.clearfix{content:''; display:block; clear:both;}
+.head{
+	height:75px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border:1px solid black;
+	position: fixed;
+	width:100%;
+	z-index:999;
+	top:0;
+	left:0;
+}
+h1{color:white; line-height: 75px; float:left;}
+.menu{float:right;}
+.menu li{float:left;}
+.menu li a{border:0; text-align: center; width:150px; line-height: 75px; color:white; padding: 0 15px; display:block;}
+
 		</style>
 		<title>Whatch Theater-뮤지컬</title>
 
@@ -58,6 +99,22 @@ ul li a:hover, ul li a:focus {
 -->
 <p></p>
 
+
+<header class="head">
+	<div>
+		<h1>Whatch Theater</h1>
+		<nav>
+			<ul class="menu">
+				<li><a href="/" class="menu">Home</a></li>
+				<li><a href="/poster-act/page/1" class="menu">연극</a></li>
+				<li><a href="/poster-musical/page/1" class="menu">뮤지컬</a></li>
+				<li><a href="#" class="menu">마이페이지</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<br><br><br><br>
 <header id="header" style="display:block;">
 	<div class="content">
 		<div class="inner">
@@ -72,47 +129,108 @@ ul li a:hover, ul li a:focus {
 var isBreak = 0;
 var pageCountMax = 25;	// 한 페이지 당 게시물 최대 수
 var pageNumber = Math.ceil(pageCount / pageCountMax);
-console.log(pageNumber);
+var posterArray = [];
 %>
 
-<table class="wrappp" style="margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
-		<tr>
-		<td colspan="5">
-		
-<div style="height:50px; border:1px; border-radius:10px;float:center; background-color: white;">
-		<input type="text" placeholder="Search" style=" background: white; font-size:16px; width:90%; padding:10px; border:2px; outline:none; float:left; color:black;">
-		<button style="width:10%; height:100%; font-size:12px; border:0px; background:black; outline:none;"><p style="padding-right:10px">Search</p></button>
-	</div>
-
-		</td>
-	</tr>
-	<%
-	for (let i = ((pageId - 1) * 5); i < 5 * pageId; i++)
-	{ %>
-		<tr>
-			<% for (let j = i * 4; j < (5 * (i+1)); j++) { %>
-				<td>
-					<table cellspacing="8.5px">
-						<tr>
-							<td><img src= <%= posts[j].thumbnail %> width="125" height="200"></td>
-						</tr>
-						<tr align="center">
-							<td><a href="#" style="color:black; text-decoration: none;"><%= posts[j].title %></a></td>
-						</tr>
-					</table>
-				</td>
-				<!-- 다음 포스터가 없으면 불러오기를 중단합니다 -->
-			<%
-				if(!posts[j + 1]) {
-					isBreak = 1;
-					break;
+<br><br><br><br><br>
+<table style="width:900px;">
+	<% for (let i = ((pageId - 1) * 5); i < 5 * pageId; i++) {
+		var index = 0;
+	%>
+	<tr>
+		<% for (let j = i * 5; j < (5 * (i+1)); j++) {
+			if(!posts[j]) {
+				isBreak = 1;
+				posterArray[index++] = {
+					title: '',
+					thumbnail: '',
+					id: '',
+				};
+			} else {
+				posterArray[index++] = {
+					title: posts[j].title,
+					thumbnail: posts[j].thumbnail,
+					id: posts[j].id,
 				}
-			} %>
-		</tr>
-		<p></p>
-	<%
-		if(isBreak) break;
-	} %>
+			}
+		} %>
+	<td align="center">
+		<span>
+			<% if(posterArray[0].thumbnail != '') { %>
+				<img src= <%= posterArray[0].thumbnail %> >
+			<% } %>
+		</span>
+		<span>
+			<a href="/poster-act/detail/1?id=<%= posterArray[0].id %>">
+				<%= posterArray[0].title %>
+			</a>
+		</span>
+	</td>
+	<td align="center">
+		<span>
+			<% if(posterArray[1].thumbnail != '') { %>
+				<img src= <%= posterArray[1].thumbnail %> >
+			<% } %>
+		</span>
+		<span>
+			<a href="/poster-act/detail/1?id=<%= posterArray[1].id %>">
+				<%= posterArray[1].title %>
+			</a>
+		</span>
+	</td>
+	<td align="center">
+		<span>
+			<% if(posterArray[2].thumbnail != '') { %>
+				<img src= <%= posterArray[2].thumbnail %> >
+			<% } %>
+		</span>
+		<span>
+			<a href="/poster-act/detail/1?id=<%= posterArray[2].id %>">
+				<%= posterArray[2].title %>
+			</a>
+		</span>
+	</td>
+	<td align="center">
+		<span>
+			<% if(posterArray[3].thumbnail != '') { %>
+				<img src= <%= posterArray[3].thumbnail %> >
+			<% } %>
+		</span>
+		<span>
+			<a href="/poster-act/detail/1?id=<%= posterArray[3].id %>">
+				<%= posterArray[3].title %>
+			</a>
+		</span>
+	</td>
+	<td align="center">
+		<span>
+			<% if(posterArray[3].thumbnail != '') { %>
+				<img src= <%= posterArray[3].thumbnail %> >
+			<% } %>
+		</span>
+		<span>
+			<a href="/poster-act/detail/1?id=<%= posterArray[3].id %>">
+				<%= posterArray[3].title %>
+			</a>
+		</span>
+	</td>
+	</tr>
+		<%
+			if(isBreak) break;
+		} %>
+</table>
+
+<br>
+<!-- 검색창 -->
+<div style="height:50px; border:1px; border-radius:10px; background-color: white;">
+	<form method="get" action="/poster-act/search/1">
+		<input type="text" name="title" placeholder="Search" style=" background: white; font-size:16px; width:800px; height: 50px; padding:10px; border:2px; outline:none; float:left; color:black;">
+		<button type="submit" style="vertical-align:center; width:100px; height:50px; font-size:12px; border:0px; background:black; outline:none;">Search</button>
+	</form>
+</div>
+
+<br><br><br><br>
+
 </table>
 	<ul>
 		<% for(let i = 1 ; i <= pageNumber ; i++) { %>
