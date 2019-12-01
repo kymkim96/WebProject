@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<style>
+.wrappp{max-width: 900px; float:center;}
+.tableWrappp{max-width: 900px; float:left;
+			width:130px; height:300px; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace; display:inline;}
+img{
+	width:125px;
+	height:200px;
+}
+
+span{
+	display:table-row;
+	text-align: center;
+}
+
+td{
+	width:150px;
+	height:220px;
+}
+
+ul {
+	list-style:none;
+	float:left;
+	display:inline;
+}
+ul li {
+	list-style:none;
+	float:left;
+}
+ul li a {
+	float:left;
+	padding:4px;
+	margin-right:10px;
+	width:25px;
+	color:white;
+	font:bold 15px tahoma;
+	border:1px solid #eee;
+	text-align:center;
+	text-decoration:none;
+}
+ul li a:hover, ul li a:focus {
+	color:black;
+	border:1px solid white;
+	background-color:white;
+}
+
+
+
+li{list-style:none;}
+a{text-decoration: none;}
+
+.clearfix{content:''; display:block; clear:both;}
+.head{
+	height:75px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border:1px solid black;
+	position: fixed;
+	width:100%;
+	z-index:999;
+	top:0;
+	left:0;
+}
+h1{color:white; line-height: 75px; float:left;}
+.menu{float:right;}
+.menu li{float:left;}
+.menu li a{border:0; text-align: center; width:150px; line-height: 75px; color:white; padding: 0 15px; display:block;}
+
+		</style>
+		<title>Whatch Theater-연극</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwlNqAEil52XRPHmSVb4Luk18qQG9GqcM&sensor=false&language=en"></script> 
+<script> 
+  function initialize() { 
+var myLatlng = new google.maps.LatLng(37.2915450, 127.0430790); // 좌표값
+  var mapOptions = { 
+        zoom: 14, // 지도 확대레벨 조정
+        center: myLatlng, 
+        mapTypeId: google.maps.MapTypeId.ROADMAP 
+  } 
+  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); 
+  var marker = new google.maps.Marker({ 
+position: myLatlng, 
+map: map, 
+title: "극장이름" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
+}); 
+  } 
+
+window.onload = initialize;
+
+</script>
+	</head>
+	<body class="is-preload" style="font-family: 'Nanum Gothic Coding', monospace;">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+<!--연극 배너
+<p></p><p></p><p></p>
+					<h1 style="font-family: 'Nanum Gothic Coding', monospace;">연극</h1>
+-->
+<p></p>
+
+<header class="head">
+	<div>
+		<h1>Whatch Theater</h1>
+		<nav>
+			<ul class="menu">
+				<li><a href="honme.html" class="menu">Home</a></li>
+				<li><a href="act.html" class="menu">연극</a></li>
+				<li><a href="musical.html" class="menu">뮤지컬</a></li>
+				<li><a href="mypage.html" class="menu">마이페이지</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+
+
+
+<br><br><br><br>
+<header id="header" style="display:block;">
+	<div class="content">
+		<div class="inner">
+			<h1>Introduce</h1>
+		</div>
+	</div>
+</header>
+
+
+
+
+			<div class="wrappp">
+
+<br><br><br><br><br><br><br><br>
+<h2>introduce</h2>
+저희 Watch Teater는, 이용자에게 연극/뮤지컬 정보 및 할인 정보, 후기, 평점 등의 콘텐츠를 제공하고, 단순한 콘텐츠 커뮤니티를 넘어서 하나의 브랜드로 자리매김하고자하는 멀티미디어 플랫폼입니다.<br>
+<br>
+Watch Teater에서는 연극/뮤지컬 정보 제공 뿐만 아니라 Watch Teater에서만 만나보실 수 있는 맞춤 연극/뮤지컬 추천, SNS 이벤트, 할인 이벤트 또한 준비되어있습니다.<br>
+<br>
+이용자님들께서 더욱 즐거운 문화생활을 즐길 수 있도록 많은 노력을 하겠습니다. 감사합니다. <br>
+<br>
+
+<br><br><br><br>
+<h2>Office</h2>
+<div id="map_canvas" style="width: 100%; height: 400px; margin:0px;"></div><br>
+ <p align="center"> 주소 : 서울특별시 노원구 공릉로 232 서울과학기술대학교 미래관 310호</p><br><br>
+
+
+<br><br><br><br>
+<h2>contact Us</h2>
+Contact Us
+주소 : 서울특별시 노원구 공릉로 232 서울과학기술대학교 미래관 3층 Watch Teater Office<br>
+
+call : 02-970-0000<br>
+
+fax : 02-970-0000<br>
+
+근무 시간 : 평일 오전 9시 ~ 오후 6시(주말 및 점심시간 제외)<br>
+
+이메일 주소 : daeun84366@gmail.com<br>
+
+
+<br><br>
+
+
+<br><br><br><br><br>
+
+				<!-- Footer -->
+					<footer id="footer" style="font-size:18px;">
+						Whatch Theater
+					</footer>
+
+			</div>
+</div>
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
