@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+
+		<style>
+
+.wrappp{max-width: 900px; margin 0 auto; float:center;
+	}
+ul {
+	list-style:none;
+	float:left;
+	display:inline;
+}
+ul li {
+	list-style:none;
+	float:left;
+}
+ul li a {
+	float:left;
+	padding:4px;
+	margin-right:10px;
+	width:25px;
+	color:white;
+	font:bold 15px tahoma;
+	border:1px solid #eee;
+	text-align:center;
+	text-decoration:none;
+}
+ul li a:hover, ul li a:focus {
+	color:black;
+	border:1px solid white;
+	background-color:white;
+}
+
+
+
+li{list-style:none;}
+a{text-decoration: none;}
+
+.clearfix{content:''; display:block; clear:both;}
+.head{
+	height:75px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border:1px solid black;
+	position: fixed;
+	width:100%;
+	z-index:999;
+	top:0;
+	left:0;
+}
+
+h1{color:white; line-height: 75px; float:left;}
+.menu{float:right;}
+.menu li{float:left;}
+.menu li a{border:0; text-align: center; width:150px; line-height: 75px; color:white; padding: 0 15px; display:block;}
+
+.file_input label{
+	position:relative;
+	cursor:pointer;
+	display:inline-block;
+	vertical-align: middle;
+	overflow:hidden;
+	width:100px;
+	height: 30px;
+	background:#777;
+	color:#fff;
+	text-align: center;
+	line-height: 30px;
+}
+.file_input label input{
+	position:absolute;
+	width:0;
+	height: 0;
+	overflow:hidden;
+}
+.file_input input[type=text]{
+	vertical-align: middle;
+	display:inline-block;
+	width:400px;
+	height:28px;
+	line-height: 28px;
+	font-size:11px;
+	padding:0;
+	border:0;
+	border:1px solid #777;
+}
+
+
+		</style>
+		<title>Whatch Theater-콘텐츠 등록</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+	</head>
+	<body class="is-preload" style="font-family: 'Nanum Gothic Coding', monospace;">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+
+
+				
+
+<p></p>
+<header class="head">
+	<div>
+		<h1>Whatch Theater</h1>
+		<nav>
+			<ul class="menu">
+				<li><a href="home.html" class="menu">Home</a></li>
+				<li><a href="act_table.html" class="menu">연극</a></li>
+				<li><a href="musical.html" class="menu">뮤지컬</a></li>
+				<li><a href="mypage.html" class="menu">마이페이지</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+<br><br><br><br>
+
+
+
+
+<header id="header" style="display:block;">
+	<div class="content">
+		<div class="inner">
+			<h1>콘텐츠 작성</h1>
+		</div>
+	</div>
+</header>
+<br><br><br><br><br><br><br>
+
+
+
+<form method="post" action="#">
+	<div>
+		<select name="class" style="width:300px;">
+			<option vlaue="">연극/뮤지컬 선택</option>
+			<option vlaue="actClass">연극</option>
+			<option value="musicalClass">뮤지컬</option>
+		</select>
+	</div>
+	<br>
+	<div>
+		<select name="categoryClass" style="width:300px;">
+			<option value="">장르 선택</option>
+			<option value="1">스릴러</option>
+			<option value="2">로맨스</option>
+			<option value="3">공포</option>
+			<option value="4">추리</option>
+		</select>
+	</div>
+	<br>
+
+		<h2>간략정보</h2>
+		<textarea style="width:800px; height: 400px;">
+			
+		</textarea>
+		<br>
+		<h2>상세정보</h2>
+		<textarea style="width:800px; height: 400px;">
+			
+		</textarea>
+<br>
+			<div class="file_input">
+				<input type="text" readonly="readonly" id="file_route">
+				<label>
+					파일 업로드
+					<input type="file" onchange="javascript:documnet.getElementById('file_route').value=this.value">
+				</label>
+			</div>
+
+
+<br><br>
+<div style="float;right;">
+		<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none;">등록
+		</button>
+</div>
+</form>
+
+				<!-- Footer -->
+					<footer id="footer">
+						Whatch Theater
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery-1.11.3.min.js"></script>
+			<script src="assets/js/star.js"></script>
+
+	</body>
+</html>
