@@ -7,11 +7,12 @@ const { User } = require('../models');
 
 //회원가입 라우터
 router.post('/signUp', isNotLoggedIn, async (req, res, next) => {
-    const { email, nick, password, tlno} = req.body;
+    const { email, nick, password, tlno, category, copy, human } = req.body;
     try {
         const exUser = await User.findOne({where: {email}});
         if(exUser) {
-            alert('이미 가입된 이메일입니다.');
+            //프론트에서 응답받아서 에러 출력해야 될 것 같음
+            console.log('중복된 이메일입니다')
             return res.redirect('/signUp');
         }
         const hash = await bcrypt.hash(password, 12);
@@ -20,6 +21,9 @@ router.post('/signUp', isNotLoggedIn, async (req, res, next) => {
             nick: nick,
             password: hash,
             phoneNumber: tlno,
+            category,
+            receiveMail: copy,
+            admitPrivate: human,
         });
         return res.redirect('/');
     } catch(error) {
@@ -36,7 +40,7 @@ router.post('/signIn', isNotLoggedIn, (req, res, next) => {
             return next(authError);
         }
         if(!user) {
-            alert(info.message);
+            console.log(info);
             return res.redirect('/signIn');
         }
         return req.login(user, (loginError) => {
