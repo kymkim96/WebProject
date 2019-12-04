@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
+const { isLoggedIn, isNotLoggedIn, adminCode, checkAdminPermission } = require('./middlewares');
 
 //메인 페이지
 router.get('/', function(req, res, next) {
@@ -21,11 +21,6 @@ router.get('/signIn', isNotLoggedIn, function(req, res, next) {
 //회원가입 페이지
 router.get('/signUp', isNotLoggedIn, function(req, res, next) {
   res.render('signUp');
-});
-
-//뮤지컬 페이지
-router.get('/poster-musical', function(req, res) {
-  res.render('musical');
 });
 
 module.exports = router;

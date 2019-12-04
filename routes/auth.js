@@ -2,7 +2,7 @@ var express = require('express');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 var router = express.Router();
-const { isNotLoggedIn, isLoggedIn } = require('./middlewares');
+const { isNotLoggedIn, isLoggedIn, adminCode } = require('./middlewares');
 const { User } = require('../models');
 
 //회원가입 라우터

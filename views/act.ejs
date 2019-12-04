@@ -188,16 +188,10 @@ h1{color:white; line-height: 75px; float:left;}
 					<img src= <%= posterArray[2].thumbnail %> >
 				<% } %>
 			</span>
-			<span onclick="
-				$.ajax({
-					url: '/poster-act/detail/1',
-					dataType: 'json',
-					type: 'GET',
-					data: { title: posterArray[2].title },
-					success: function(result) {}
-				});
-			">
+			<span>
+				<a href="/poster-act/detail/1?id=<%= posterArray[2].id %>">
 					<%= posterArray[2].title %>
+				</a>
 			</span>
 		</td>
 		<td align="center">
@@ -206,16 +200,10 @@ h1{color:white; line-height: 75px; float:left;}
 					<img src= <%= posterArray[3].thumbnail %> >
 				<% } %>
 			</span>
-			<span onclick="
-				$.ajax({
-					url: '/poster-act/detail/1',
-					dataType: 'json',
-					type: 'GET',
-					data: { title: posterArray[3].title },
-					success: function(result) {}
-				});
-			">
+			<span>
+				<a href="/poster-act/detail/1?id=<%= posterArray[3].id %>">
 					<%= posterArray[3].title %>
+				</a>
 			</span>
 		</td>
 		<td align="center">
@@ -224,16 +212,10 @@ h1{color:white; line-height: 75px; float:left;}
 					<img src= <%= posterArray[4].thumbnail %> >
 				<% } %>
 			</span>
-			<span onclick="
-				$.ajax({
-					url: '/poster-act/detail/1',
-					dataType: 'json',
-					type: 'GET',
-					data: { title: posterArray[4].title },
-					success: function(result) {}
-				});
-			">
+			<span>
+				<a href="/poster-act/detail/1?id=<%= posterArray[4].id %>">
 					<%= posterArray[4].title %>
+				</a>
 			</span>
 		</td>
 	</tr>
@@ -275,10 +257,5 @@ h1{color:white; line-height: 75px; float:left;}
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script>
-				$(document).ready(function() {
-
-				})
-			</script>
 	</body>
 </html>

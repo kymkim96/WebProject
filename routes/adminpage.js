@@ -8,13 +8,13 @@ const router = express.Router();
 const { checkAdminPermission } = require('./middlewares');
 
 //관리자 페이지 출력
-router.get('/', checkAdminPermission, function(req, res) {
-    res.render('test2');
+router.get('/', function(req, res) {
+    res.render('manageMypage');
 })
 
 //관리자 페이지 포스터 업로드 폼
 router.get('/poster-upload', function(req, res) {
-    res.render('uploadform');
+    res.render('writeBoard');
 })
 
 module.exports = router;

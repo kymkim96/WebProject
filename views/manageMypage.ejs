@@ -3,29 +3,9 @@
 <html>
 	<head>
 		<style>
-.wrappp{max-width: 1000px; float:center;}
-tr td{ 
-	 height:50px;
-	 text-align: center;
-}
-
-.textnum{
-	width:10%;
-	 text-align: center;
-}
-.textTitle{
-	width:50%;
-	text-align: left;
-}
-.textWriter{
-	width:20%;
-	 text-align: center;
-}
-.textDay{
-	width:20%;
-	 text-align: center;
-}
-
+.wrappp{max-width: 900px; float:center;}
+.tableWrappp{max-width: 900px; float:left;
+			width:130px; height:300px; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace; display:inline;}
 img{
 	width:125px;
 	height:200px;
@@ -89,7 +69,7 @@ h1{color:white; line-height: 75px; float:left;}
 .menu li a{border:0; text-align: center; width:150px; line-height: 75px; color:white; padding: 0 15px; display:block;}
 
 		</style>
-		<title>Whatch Theater-Event</title>
+		<title>Whatch Theater-Manager</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -97,15 +77,6 @@ h1{color:white; line-height: 75px; float:left;}
 		<link rel="stylesheet" href="assets/css/main.css" />
 
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<script>
-			var patt = new RegExp("[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}");
-var res = patt.test( $("#tlno").val());
-
-if( !patt.test( $("#tlno").val()) ){
-    alert("전화번호를 정확히 입력하여 주십시오.");
-    return false;
-}
-</script>
 	</head>
 	<body class="is-preload" style="font-family: 'Nanum Gothic Coding', monospace;">
 
@@ -124,7 +95,7 @@ if( !patt.test( $("#tlno").val()) ){
 				<li><a href="home.html" class="menu">Home</a></li>
 				<li><a href="act.html" class="menu">연극</a></li>
 				<li><a href="musical.html" class="menu">뮤지컬</a></li>
-				<li><a href="mypage.html" class="menu">마이페이지</a></li>
+				<li><a href="mypage.ejs" class="menu">마이페이지</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -138,52 +109,34 @@ if( !patt.test( $("#tlno").val()) ){
 <header id="header" style="display:block;">
 	<div class="content">
 		<div class="inner">
-			<h1>Event</h1>
+			<h1>MyPage-Manager</h1>
 		</div>
-	</div><br><br><br><br><br><br><br>
+	</div>
 </header>
+<br><br>
+<p>
+	<h2>ID</h2>
+</p><br><br>
+<P>
+	<a href="information.html">회원정보수정</a>
+</P>
+<p>
+	<a href="contentsEdit.html">연극/뮤지컬 추가 및 수정</a>
+</p>
+<p>
+	<a href="act.html">리뷰관리</a>
+</p>
+<p>
+	<a hrfe="event.html">이벤트 관리</a>
+</p>
+<p>
+	<a hrfe="notice.html">공지사항 관리</a>
+</p>
 
 
-	<table class="wrappp">
-		<tr>
-			<td class="textNum">번호</td>
-			<td class="textTitle" style="text-align: center;">제목</td>
-			<td class="textWriter">ID</td>
-			<td class="textDay">날짜</td>
-		</tr>
-		<tr>
-			<td class="textNum">1</td>
-			<td class="textTitle">안녕안녕안녕</td>
-			<td class="textWriter">누구게</td>
-			<td class="textDay">2019-12-02</td>
-		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
-	</table>
-<!--관리자로 로그인해야만 이 버튼이, 보이도록
-<div style="float;right;">
-		<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none; text-align: center;"><a href="writeBoard.html">작성</a>
-		</button>
-</div>
--->
-							
 
+
+<br><br><br><br>
 
 				<!-- Footer -->
 					<footer id="footer" style="font-size:18px;">
