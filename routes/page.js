@@ -50,4 +50,14 @@ router.get('/notice', isLoggedIn, function (req, res, next) {
   });
 });
 
+//연극, 뮤지컬 업로드 페이지
+router.get('/addContent', checkAdminPermission, function (req, res, next) {
+  res.render('addContents');
+});
+
+//이벤트, 공지사항 업로드 페이지
+router.get('/writeBoard', checkAdminPermission, function (req, res, next) {
+  res.render('writeBoard');
+});
+
 module.exports = router;

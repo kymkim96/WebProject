@@ -42,7 +42,10 @@ router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, ne
          const post = await Poster.create({
             title: req.body.title,  //제목
             thumbnail: req.body.url,  //업로드한 이미지
-            classify: req.body.classify,    //연극인지 뮤지컬인지에 대한 분류
+            classify: req.body.class,    //연극인지 뮤지컬인지에 대한 분류
+            genre: req.body.categoryClass,
+            shortinfo: req.body.shortinfo,
+            longinfo: req.body.longinfo,
         });
          //default review 생성, 리뷰 안내 글
          const review = await Review.create({
@@ -61,15 +64,15 @@ router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, ne
 
 router.post('/review-upload', isLoggedIn, upload2.none(), async (req, res, next) => {
     try {
-        console.log(req.body);
+        console.log(req.body.startinput);
         const review = await Review.create({
             content: req.body.content,
             img: req.body.url,
-            rank: req.body.star-input,
+            rank: req.body.starinput,
         });
-        const post = await Poster.findOne({ where: {title: req.body.title}});
+        const post = await Poster.findOne({ where: {id: req.body.id}});
         await post.addReview(review);
-        res.redirect(`/poster-act/detail/1?title=${req.body.title}`);
+        res.redirect(`/poster-act/detail/1?id=${req.body.id}`);
     } catch(error) {
         console.error(error);
         next(error);

@@ -111,10 +111,10 @@ h1{color:white; line-height: 75px; float:left;}
 		<h1>Whatch Theater</h1>
 		<nav>
 			<ul class="menu">
-				<li><a href="#" class="menu">Home</a></li>
-				<li><a href="#" class="menu">연극</a></li>
-				<li><a href="#" class="menu">뮤지컬</a></li>
-				<li><a href="#" class="menu">마이페이지</a></li>
+				<li><a href="/" class="menu">Home</a></li>
+				<li><a href="/poster-act/page/1" class="menu">연극</a></li>
+				<li><a href="/poster-musical/page/1" class="menu">뮤지컬</a></li>
+				<li><a href="/mypage" class="menu">마이페이지</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -151,10 +151,10 @@ h1{color:white; line-height: 75px; float:left;}
 	<tr>
 		<td>
 			<div class="file_input">
-				<input type="text" readonly="readonly" id="file_route">
+				<input id="url" name="url" type="text" readonly="readonly" id="file_route">
 				<label>
 					파일 업로드
-					<input type="file" onchange="javascript:documnet.getElementById('file_route').value=this.value">
+					<input id="img" type="file" accept="image/*">
 				</label>
 			</div>
 		</td>
@@ -186,6 +186,26 @@ h1{color:white; line-height: 75px; float:left;}
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/jquery-1.11.3.min.js"></script>
 			<script src="assets/js/star.js"></script>
-
+		<!--지우지 말 것! 이미지 파일 url 받아오는 전송, 응답 객체들임-->
+		<script>
+			if(document.getElementById('img')) {
+				document.getElementById('img').addEventListener('change', function(e) {
+					var formData = new FormData();
+					console.log(this, this.files);
+					formData.append('img', this.files[0]);
+					var xhr = new XMLHttpRequest();
+					xhr.onload = function() {
+						if(xhr.status === 200) {
+							var url = JSON.parse(xhr.responseText).url;
+							document.getElementById('url').value = url;
+						} else {
+							console.error(xhr.responseText);
+						}
+					};
+					xhr.open('POST', '/upload/img');
+					xhr.send(formData);
+				});
+			}
+		</script>
 	</body>
 </html>

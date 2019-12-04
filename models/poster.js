@@ -5,7 +5,11 @@ module.exports = (sequelize, DataTypes) => (
             type: DataTypes.STRING(20),
             allowNull: false,
         },
-        introduction: {
+        shortinfo: {
+            type: DataTypes.STRING(200),
+            allowNull: true,
+        },
+        longinfo: {
             type: DataTypes.STRING(200),
             allowNull: true,
         },

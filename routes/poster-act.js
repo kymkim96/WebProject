@@ -23,7 +23,6 @@ router.get('/search/:id', async (req, res, next) => {
     try {
        const posts = await Poster.findAll({where: {title: req.query.title}});
        const postCount = await Poster.findAndCountAll({where: {title: req.query.title}});
-       console.log(postCount);
        res.render('act', {
            posts: posts,
            pageId: req.params.id,
@@ -41,7 +40,7 @@ router.get('/detail/:id', async (req, res, next) => {
         const post = await Poster.findOne({ where: { id: req.query.id }});
         //console.log(post);
         const reviews = await post.getReviews();
-        res.render('viewAct', {
+        res.render('viewReview', {
             post: post,
             pageId: req.params.id,
             reviews: reviews,
@@ -56,7 +55,7 @@ router.get('/detail/:id', async (req, res, next) => {
 //writeReview : 연극 리뷰 업로드 페이지
 router.get('/review-upload', async (req, res, nex) => {
     try {
-        const post = await Poster.findOne({where: {title: req.query.title}});
+        const post = await Poster.findOne({where: {id: req.query.id}});
         res.render('writeReview', {
             post: post,
         })

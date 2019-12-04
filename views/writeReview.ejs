@@ -130,10 +130,10 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 		<h1>Whatch Theater</h1>
 		<nav>
 			<ul class="menu">
-				<li><a href="home.html" class="menu">Home</a></li>
-				<li><a href="act.html" class="menu">연극</a></li>
-				<li><a href="html files/musical.html" class="menu">뮤지컬</a></li>
-				<li><a href="mypage.ejs" class="menu">마이페이지</a></li>
+				<li><a href="/" class="menu">Home</a></li>
+				<li><a href="/poster-act/page/1" class="menu">연극</a></li>
+				<li><a href="/poster-musical/page/1" class="menu">뮤지컬</a></li>
+				<li><a href="/mypage" class="menu">마이페이지</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -163,15 +163,15 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 			<td align="center" style="height:50px;">
 <span class="star-input">
 	<span class="input">
-    	<input type="radio" name="star-input" value="1" id="p1">
+    	<input type="radio" name="starinput" value="1" id="p1">
     	<label for="p1">1</label>
-    	<input type="radio" name="star-input" value="2" id="p2">
+    	<input type="radio" name="starinput" value="2" id="p2">
     	<label for="p2">2</label>
-    	<input type="radio" name="star-input" value="3" id="p3">
+    	<input type="radio" name="starinput" value="3" id="p3">
     	<label for="p3">3</label>
-    	<input type="radio" name="star-input" value="4" id="p4">
+    	<input type="radio" name="starinput" value="4" id="p4">
     	<label for="p4">4</label>
-    	<input type="radio" name="star-input" value="5" id="p5">
+    	<input type="radio" name="starinput" value="5" id="p5">
     	<label for="p5">5</label>
   	</span>
   	<output for="star-input"><b>0</b>/5점</output>						
@@ -189,7 +189,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 			<td>
 				<div class="file_input">
 					<input id="url" type="text" name="url" readonly="readonly" id="file_route">
-					<input type="hidden" name="title" value="<%= post.title %>">
+					<input type="hidden" name="id" value="<%= post.id %>">
 					<label>
 						파일 업로드
 						<input id="img" type="file" accept="image/*">
@@ -226,6 +226,27 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 			<!--js파일이랑 img 파일에 연결해야함 public에 저장해둠 참고할것!!-->
 			<script src="js/jquery-1.11.3.min.js"></script>
 			<script src="js/star.js"></script>
+<!--지우지 말 것! 이미지 파일 url 받아오는 전송, 응답 객체들임-->
+			<script>
+				if(document.getElementById('img')) {
+					document.getElementById('img').addEventListener('change', function(e) {
+						var formData = new FormData();
+						console.log(this, this.files);
+						formData.append('img', this.files[0]);
+						var xhr = new XMLHttpRequest();
+						xhr.onload = function() {
+							if(xhr.status === 200) {
+								var url = JSON.parse(xhr.responseText).url;
+								document.getElementById('url').value = url;
+							} else {
+								console.error(xhr.responseText);
+							}
+						};
+						xhr.open('POST', '/upload/img');
+						xhr.send(formData);
+					});
+				}
+			</script>
 
 	</body>
 </html>

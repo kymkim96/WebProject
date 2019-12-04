@@ -112,10 +112,10 @@ h1{color:white; line-height: 75px; float:left;}
 		<h1>Whatch Theater</h1>
 		<nav>
 			<ul class="menu">
-				<li><a href="home.html" class="menu">Home</a></li>
-				<li><a href="act_table.html" class="menu">연극</a></li>
-				<li><a href="musical.html" class="menu">뮤지컬</a></li>
-				<li><a href="mypage.html" class="menu">마이페이지</a></li>
+				<li><a href="/" class="menu">Home</a></li>
+				<li><a href="/poster-act/page/1" class="menu">연극</a></li>
+				<li><a href="/poster-musical/page/1" class="menu">뮤지컬</a></li>
+				<li><a href="/mypage" class="menu">마이페이지</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -138,12 +138,17 @@ h1{color:white; line-height: 75px; float:left;}
 
 
 
-<form method="post" action="#">
+<form method="post" action="/upload/poster">
+	<div>
+		제목
+		<input type="text" name="title" style="width:300px;">
+	</div>
+	<br>
 	<div>
 		<select name="class" style="width:300px;">
-			<option vlaue="">연극/뮤지컬 선택</option>
-			<option vlaue="actClass">연극</option>
-			<option value="musicalClass">뮤지컬</option>
+			<option value="">연극/뮤지컬 선택</option>
+			<option value="act">연극</option>
+			<option value="musical">뮤지컬</option>
 		</select>
 	</div>
 	<br>
@@ -159,20 +164,20 @@ h1{color:white; line-height: 75px; float:left;}
 	<br>
 
 		<h2>간략정보</h2>
-		<textarea style="width:800px; height: 400px;">
+		<textarea style="width:800px; height: 400px;" name="shortinfo">
 			
 		</textarea>
 		<br>
 		<h2>상세정보</h2>
-		<textarea style="width:800px; height: 400px;">
+		<textarea style="width:800px; height: 400px;" name="longinfo">
 			
 		</textarea>
 <br>
 			<div class="file_input">
-				<input type="text" readonly="readonly" id="file_route">
+				<input id="url" name="url" type="text" readonly="readonly" id="file_route">
 				<label>
 					파일 업로드
-					<input type="file" onchange="javascript:documnet.getElementById('file_route').value=this.value">
+					<input id="img" type="file" accept="image/*">
 				</label>
 			</div>
 
@@ -200,8 +205,30 @@ h1{color:white; line-height: 75px; float:left;}
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/jquery-1.11.3.min.js"></script>
-			<script src="assets/js/star.js"></script>
+			<!-- <script src="assets/js/jquery-1.11.3.min.js"></script>
+			<script src="assets/js/star.js"></script> -->
+
+			<!--지우지 말 것! 이미지 파일 url 받아오는 전송, 응답 객체들임-->
+			<script>
+				if(document.getElementById('img')) {
+					document.getElementById('img').addEventListener('change', function(e) {
+						var formData = new FormData();
+						console.log(this, this.files);
+						formData.append('img', this.files[0]);
+						var xhr = new XMLHttpRequest();
+						xhr.onload = function() {
+							if(xhr.status === 200) {
+								var url = JSON.parse(xhr.responseText).url;
+								document.getElementById('url').value = url;
+							} else {
+								console.error(xhr.responseText);
+							}
+						};
+						xhr.open('POST', '/upload/img');
+						xhr.send(formData);
+					});
+				}
+			</script>
 
 	</body>
 </html>

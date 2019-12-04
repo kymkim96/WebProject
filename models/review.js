@@ -9,8 +9,9 @@ module.exports = (sequelize, DataTypes) => (
             allowNull: true,
         },
         rank: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(20),
             allowNull: true,
+            defaultValue: 0,
         }
     }, {
         timestamps: true,

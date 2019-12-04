@@ -35,25 +35,34 @@ router.get('/search/:id', async (req, res, next) => {
     }
 });
 
-//연극 상세 페이지 및 리뷰 보이기
+//상세 페이지
 router.get('/detail/:id', async (req, res, next) => {
     try {
         const post = await Poster.findOne({ where: { id: req.query.id }});
-        res.render('test2', {
+        const reviews = await post.getReviews();
+        res.render('viewReview', {
             post: post,
-        })
+            pageId: req.params.id,
+            reviews: reviews,
+            pageCount: reviews.length,
+        });
     } catch(error) {
         console.error(error);
         next(error)
     }
 });
 
-//연극 업로드 폼 로딩
-router.get('/review-upload', isLoggedIn, async (req, res, next) => {
-    const post = await Poster.findOne({ where: {id: req.query.id }});
-    res.render('test2', {
-        post: post,
-    })
-})
+//writeReview : 뮤지컬 리뷰 업로드 페이지
+router.get('/review-upload', async (req, res, nex) => {
+    try {
+        const post = await Poster.findOne({where: {id: req.query.id}});
+        res.render('writeReview', {
+            post: post,
+        })
+    } catch(error) {
+        console.error(error);
+        next(error);
+    }
+});
 
 module.exports = router;
