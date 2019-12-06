@@ -46,6 +46,25 @@ ul li a:hover, ul li a:focus {
 	border:1px solid white;
 	background-color:white;
 }
+li{list-style:none;}
+a{text-decoration: none;}
+
+.clearfix{content:''; display:block; clear:both;}
+.head{
+	height:75px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border:1px solid black;
+	position: fixed;
+	width:100%;
+	z-index:999;
+	top:0;
+	left:0;
+}
+
+h1{color:white; line-height: 75px; float:left;}
+.menu{float:right;}
+.menu li{float:left;}
+.menu li a{border:0; text-align: center; width:150px; line-height: 75px; color:white; padding: 0 15px; display:block;}
 		</style>
 		<title>Whatch Theater-연극</title>
 
@@ -65,6 +84,24 @@ ul li a:hover, ul li a:focus {
 <p></p><p></p><p></p>
 					<h1 style="font-family: 'Nanum Gothic Coding', monospace;">연극</h1>
 -->
+<header class="head">
+	<div>
+		<h1>Whatch Theater</h1>
+		<nav>
+			<ul class="menu">
+				<li><a href="home.html" class="menu">Home</a></li>
+				<li><a href="act_test.html" class="menu">연극</a></li>
+				<li><a href="musical.html" class="menu">뮤지컬</a></li>
+				<li><a href="mypag.html" class="menu">마이페이지</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+<br><br><br><br>
+
+
 <p></p>
 
 <header id="header" style="display:block;">
