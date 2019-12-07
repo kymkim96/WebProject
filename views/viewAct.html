@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwlNqAEil52XRPHmSVb4Luk18qQG9GqcM&sensor=false&language=en"></script> 
+<script> 
+  function initialize() { 
+var myLatlng = new google.maps.LatLng(37.2915450, 127.0430790); // 좌표값
+  var mapOptions = { 
+        zoom: 14, // 지도 확대레벨 조정
+        center: myLatlng, 
+        mapTypeId: google.maps.MapTypeId.ROADMAP 
+  } 
+  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); 
+  var marker = new google.maps.Marker({ 
+position: myLatlng, 
+map: map, 
+title: "극장이름" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
+}); 
+  } 
+
+window.onload = initialize;
+
+</script>
+
+		<style>
+.reviewImg{
+	width:125px;
+	height:200px;
+}
+
+.wrappp{max-width: 1000px; margin 0 auto; float:center;}
+ul {
+	list-style:none;
+	float:left;
+	display:inline;
+}
+ul li {
+	list-style:none;
+	float:left;
+}
+ul li a {
+	float:left;
+	padding:4px;
+	margin-right:10px;
+	width:25px;
+	color:white;
+	font:bold 15px tahoma;
+	border:1px solid #eee;
+	text-align:center;
+	text-decoration:none;
+}
+ul li a:hover, ul li a:focus {
+	color:black;
+	border:1px solid white;
+	background-color:white;
+}
+
+
+
+li{list-style:none;}
+a{text-decoration: none;}
+
+.clearfix{content:''; display:block; clear:both;}
+.head{
+	height:75px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border:1px solid black;
+	position: fixed;
+	width:100%;
+	z-index:999;
+	top:0;
+	left:0;
+}
+
+h1{color:white; line-height: 75px; float:left;}
+.menu{float:right;}
+.menu li{float:left;}
+.menu li a{border:0; text-align: center; width:150px; line-height: 75px; color:white; padding: 0 15px; display:block;}
+
+		</style>
+		<title>Whatch Theater-연극</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload" style="font-family: 'Nanum Gothic Coding', monospace;">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+
+
+				
+
+<p></p>
+<header class="head">
+	<div>
+		<h1>Whatch Theater</h1>
+		<nav>
+			<ul class="menu">
+				<li><a href="home.html" class="menu">Home</a></li>
+				<li><a href="act_test.html" class="menu">연극</a></li>
+				<li><a href="musical.html" class="menu">뮤지컬</a></li>
+				<li><a href="mypag.html" class="menu">마이페이지</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+<br><br><br><br>
+
+
+
+
+
+<header id="header" style="display:block;">
+	<div class="content">
+		<div class="inner">
+			<h1>연극</h1>
+		</div>
+	</div>
+</header>
+<br><br><br><br><br>
+
+
+
+
+
+<table class="wrappp" style="width: 1000px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
+	<tr>
+		<td align="center" rowspan="4" style="width:35%; margin-top: auto; margin-bottom: auto;"><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" width="180px" height="250px">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			제목
+		</td>
+	</tr>
+	<tr>
+		<td><!--별점 writeReview에서 매긴거 평균내서 그 평균만큼 별 이미지 나오는거 반복시키면됨-->
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			( /5)
+			<!--별점 평균낸거 넣으면 됨-->
+			<br>
+
+		</td>
+	</tr>
+	<tr>
+		<td>
+			간략설명
+			<br><br><br><br>
+		</td>
+	</tr>
+</table>
+
+<table class="wrappp" style="width: 1000px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
+	<tr  style="height: 50px;">
+		<td align="center"><a href="#description">
+			상세정보
+		</td>
+		<td align="center"><a href="#timeAndLocation">
+			위치
+		</td>
+		<td align="center"><a href="#showReview">
+			리뷰
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3"><a name="description">
+		<br><h2>상세정보</h2></a><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3"><a name="timeAndLocation">
+			<br>
+			<h2>위치</h2></a>
+			<br> <!--구글맵 사용-->
+			<div id="map_canvas" style="width: 100%; height: 400px; margin:0px;"></div><br>
+			서울특별시 대학로 하늘극장 지하 1층
+<br><br><br>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3"><a name="showReview">
+			<br><h2>리뷰</h2></a><br><br>
+
+	<table>
+			<img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" class="reviewImg">
+			<!--리뷰 쓸 때 첨부한 사진 올라가는 부분, 아무것도 첨부 하지 않으면 아무것도 안보이게하기-->
+			<br>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<!--리뷰 쓸때 매긴 별점 만큼 for문 돌려서 별 출력-->
+			<br>
+			ID
+			<br>
+			날짜
+			<br>
+			평가
+	</table><hr>
+
+	<table>
+			<img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" class="reviewImg">
+			<br>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<!--리뷰 쓸때 매긴 별점 만큼 for문 돌려서 별 출력-->
+			<br>
+			ID
+			<br>
+			날짜
+			<br>
+			평가
+	</table><hr>
+
+	<table>
+			<img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" class="reviewImg">
+			<br>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<span><img style="width:30px; height:30px;" src="star.png"></span>
+			<!--리뷰 쓸때 매긴 별점 만큼 for문 돌려서 별 출력-->
+			<br>
+			ID
+			<br>
+			날짜
+			<br>
+			평가
+	</table><hr>
+	<button style="float:right; vertical-align: :center; width:130px; height:50px; font-size:18px; border:0px; background:black; outline:none;"><a href="writeReview.html">리뷰 등록</a>
+		</button>
+	</td>
+	</tr>
+</table>
+
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						Whatch Theater
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

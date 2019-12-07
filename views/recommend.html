@@ -3,29 +3,9 @@
 <html>
 	<head>
 		<style>
-.wrappp{max-width: 1000px; float:center;}
-tr td{ 
-	 height:50px;
-	 text-align: center;
-}
-
-.textnum{
-	width:10%;
-	 text-align: center;
-}
-.textTitle{
-	width:50%;
-	text-align: left;
-}
-.textWriter{
-	width:20%;
-	 text-align: center;
-}
-.textDay{
-	width:20%;
-	 text-align: center;
-}
-
+.wrappp{max-width: 900px; float:center;}
+.tableWrappp{max-width: 900px; float:left;
+			width:130px; height:300px; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace; display:inline;}
 img{
 	width:125px;
 	height:200px;
@@ -89,7 +69,7 @@ h1{color:white; line-height: 75px; float:left;}
 .menu li a{border:0; text-align: center; width:150px; line-height: 75px; color:white; padding: 0 15px; display:block;}
 
 		</style>
-		<title>Whatch Theater-Notice</title>
+		<title>Whatch Theater-맞춤 추천</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -97,7 +77,6 @@ h1{color:white; line-height: 75px; float:left;}
 		<link rel="stylesheet" href="assets/css/main.css" />
 
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		
 	</head>
 	<body class="is-preload" style="font-family: 'Nanum Gothic Coding', monospace;">
 
@@ -105,7 +84,10 @@ h1{color:white; line-height: 75px; float:left;}
 			<div id="wrapper">
 
 				<!-- Header -->
-
+<!--연극 배너
+<p></p><p></p><p></p>
+					<h1 style="font-family: 'Nanum Gothic Coding', monospace;">연극</h1>
+-->
 <p></p>
 
 <header class="head">
@@ -113,10 +95,10 @@ h1{color:white; line-height: 75px; float:left;}
 		<h1>Whatch Theater</h1>
 		<nav>
 			<ul class="menu">
-				<li><a href="/" class="menu">Home</a></li>
-				<li><a href="/poster-act/page/1" class="menu">연극</a></li>
-				<li><a href="/poster-musical/page/1" class="menu">뮤지컬</a></li>
-				<li><a href="/mypage" class="menu">마이페이지</a></li>
+				<li><a href="#" class="menu">Home</a></li>
+				<li><a href="#" class="menu">연극</a></li>
+				<li><a href="#" class="menu">뮤지컬</a></li>
+				<li><a href="#" class="menu">마이페이지</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -130,63 +112,65 @@ h1{color:white; line-height: 75px; float:left;}
 <header id="header" style="display:block;">
 	<div class="content">
 		<div class="inner">
-			<h1>Notice</h1>
+			<h1>맞춤 추천</h1>
 		</div>
-	</div><br><br><br><br><br><br><br>
+	</div>
 </header>
 
 
-	<table class="wrappp">
-		<tr>
-			<td class="textNum">번호</td>
-			<td class="textTitle" style="text-align: center;">제목</td>
-			<td class="textWriter">ID</td>
-			<td class="textDay">날짜</td>
-		</tr>
-		<tr>
-			<td class="textNum">1</td>
-			<td class="textTitle">공지공지공지</td>
-			<td class="textWriter">매니저?</td>
-			<td class="textDay">2019-12-02</td>
-		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
-	</table>
 
-<!--관리자로 로그인해야만 이 버튼이, 보이도록-->
-<% if ( isAdmin ) { %>
-<div style="float;right;">
-		<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none; text-align: center;"><a href="/writeBoard">작성</a>
-		</button>
-</div>
-<% } %>
 
-<br><br><br>
-	<ul>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#">6</a></li>
-		<li><a href="#">7</a></li>
-	</ul>
+
+<br><br><br><br><br>
+<h2>회원님이 선호하시는 카테고리에 맞는 연극/뮤지컬을 추천해드립니다!</h2>
+<br><br>
+<table style="width:900px;">
+	<tr>
+		<td align="center">
+			<span><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg">
+		</span>
+		<span>
+			<a href="#">만리향</a>
+		</span>
+	</td>
+	<td align="center">
+				<span><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg">
+		</span>
+		<span>
+			<a href="#">만리향</a>
+		</span>
+	</td>
+	<td align="center">
+				<span><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg">
+		</span>
+		<span>
+			<a href="#">만리향</a>
+		</span>
+	</td>
+	<td align="center">
+				<span><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg">
+		</span>
+		<span>
+			<a href="#">만리향</a>
+		</span>
+	</td>
+		<td align="center">
+				<span><img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg">
+		</span>
+		<span>
+			<a href="#">만리향</a>
+		</span>
+	</td>
+	</tr>
+</table>
+
+
+<br>
+
+
+<br><br><br><br>
+
+
 				<!-- Footer -->
 					<footer id="footer" style="font-size:18px;">
 						Whatch Theater
