@@ -134,6 +134,11 @@ h1{color:white; line-height: 75px; float:left;}
 	</div><br><br><br><br><br><br><br>
 </header>
 
+ <%
+	 var isBreak = 0;
+	 var pageCountMax = 4;	// 한 페이지 당 게시물 최대 수
+	 var pageNumber = Math.ceil(pageCount / pageCountMax);
+ %>
 
 	<table class="wrappp">
 		<tr>
@@ -142,30 +147,19 @@ h1{color:white; line-height: 75px; float:left;}
 			<td class="textWriter">ID</td>
 			<td class="textDay">날짜</td>
 		</tr>
+		<% for( let i = ((pageId - 1) * 5) ; i < 5 * pageId ; i++ ) { %>
 		<tr>
-			<td class="textNum">1</td>
-			<td class="textTitle">안녕안녕안녕</td>
-			<td class="textWriter">누구게</td>
-			<td class="textDay">2019-12-02</td>
+			<td class="textNum"><%= posts[i].id %></td>
+			<td class="textTitle">
+				<a href="/viewEvent_notice">
+					<%= posts[i].title %>
+				</a>
+			</td>
+			<td class="textWriter">관리자</td>
+			<td class="textDay"><%= posts[i].createdAt %>></td>
 		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
-		<tr>
-			<td class="textNum"></td>
-			<td class="textTitle"></td>
-			<td class="textWriter"></td>
-			<td class="textDay"></td>
-		</tr>
+		<% if(!posts[i + 1]) break;
+		} %>
 	</table>
 <!--관리자로 로그인해야만 이 버튼이, 보이도록-->
 <% if(isAdmin) { %>
@@ -178,15 +172,13 @@ h1{color:white; line-height: 75px; float:left;}
 							
 
 <br><br><br>
-	<ul>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#">6</a></li>
-		<li><a href="#">7</a></li>
-	</ul>
+
+<!-- 페이지 리스트 번호 -->
+<ul>
+	<% for(let i = 1 ; i <= pageNumber ; i++) { %>
+		<li><a href="/event/<%= i %>"> <%= i %> </a></li>
+	<% } %>
+</ul>
 				<!-- Footer -->
 					<footer id="footer" style="font-size:18px;">
 						Whatch Theater

@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => (
         },
         thumbnail: {
             type: DataTypes.STRING(200),
-            allowNull: false,
+            allowNull: true,
         },
         //연극, 뮤지컬 별점 정보
         rank: {

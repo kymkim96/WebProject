@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const { Poster, Review } = require('../models');
+const { Poster, Review, User } = require('../models');
 const { checkAdminPermission, isLoggedIn } = require('./middlewares');
 
 fs.readdir('uploads', (error) => {
@@ -60,8 +60,28 @@ router.post('/poster', checkAdminPermission, upload2.none(), async (req, res, ne
     }
 });
 
-//리뷰 업로드 라우터
+//이벤트 및 공지 업로드 라우터
+router.post('/en', checkAdminPermission, upload2.none(), async (req, res, next) => {
+   const { title, content, classify, url} = req.body;
+   try {
+       const post = await Poster.create({
+           title: title,
+           longinfo: content,
+           classify,
+           thumbnail: url,
+       });
 
+       if(classify === 'event')
+           return res.redirect('/event/1');
+       else return res.redirect('/notice/1');
+
+   } catch(error) {
+       console.error(error);
+       return next(error);
+   }
+});
+
+//리뷰 업로드 라우터
 router.post('/review-upload', isLoggedIn, upload2.none(), async (req, res, next) => {
     try {
         console.log(req.body.startinput);
@@ -70,8 +90,13 @@ router.post('/review-upload', isLoggedIn, upload2.none(), async (req, res, next)
             img: req.body.url,
             rank: req.body.starinput,
         });
+
         const post = await Poster.findOne({ where: {id: req.body.id}});
         await post.addReview(review);
+
+        const user = await User.findOne({ where: {id: req.user.id}});
+        await user.addReview(review);
+
         res.redirect(`/poster-act/detail/1?id=${req.body.id}`);
     } catch(error) {
         console.error(error);

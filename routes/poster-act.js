@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Poster, Review } = require('../models');
+const { Poster, Review, User } = require('../models');
 
 //연극 페이지 로딩
 router.get('/page/:id', async (req, res, next) => {
@@ -35,15 +35,18 @@ router.get('/search/:id', async (req, res, next) => {
 });
 
 //viewAct : 연극 상세 페이지
-router.get('/detail/:id', async (req, res, next) => {
+router.get('/detail', async (req, res, next) => {
     try {
         const post = await Poster.findOne({ where: { id: req.query.id }});
-        //console.log(post);
         const reviews = await post.getReviews();
+
+        const users = await User.findAll();
+
         res.render('viewReview', {
             post: post,
             pageId: req.params.id,
             reviews: reviews,
+            users: users,
             pageCount: reviews.length,
         });
     } catch(error) {

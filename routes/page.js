@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const { isLoggedIn, isNotLoggedIn, adminCode, checkAdminPermission } = require('./middlewares');
-var check = false;
+const { Poster, User } = require('../models');
+var check = true;
 var isAdmin = check;
 
 //메인 페이지
@@ -33,24 +34,33 @@ router.get('/information-update', isLoggedIn, function (req, res, next) {
 });
 
 //이벤트 페이지
-router.get('/event', isLoggedIn, function (req, res, next) {
+router.get('/event/:id', isLoggedIn, async (req, res, next) => {
   if(req.user.admincode === adminCode.admincode ) {
-    isAdmin = check;
     check = false;
   }
+
+  const posts = await Poster.findAll({where: {classify: 'event'}});
+
   res.render('event', {
     isAdmin: isAdmin,
+    posts: posts,
+    pageId: req.params.id,
+    pageCount: posts.length,
   });
 });
 
 //공지사항
-router.get('/notice', isLoggedIn, function (req, res, next) {
+router.get('/notice/1', isLoggedIn, async (req, res, next) => {
   if(req.user.admincode === adminCode.admincode ) {
-    isAdmin = check;
     check = false;
   }
+
+  const posts = await Poster.findAll({where: {classify: 'notice'}});
+
   res.render('notice', {
     isAdmin,
+    posts: posts,
+    pageId: req.params.id,
   });
 });
 
