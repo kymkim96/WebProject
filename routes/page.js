@@ -27,13 +27,17 @@ router.get('/signUp', isNotLoggedIn, function(req, res, next) {
 
 //회원 정보 수정페이지
 router.get('/information-update', isLoggedIn, function (req, res, next) {
-  res.render('informaion');
+  res.render('information', {
+    user: req.user,
+  });
 });
 
 //이벤트 페이지
 router.get('/event', isLoggedIn, function (req, res, next) {
-  if(req.user.admincode === adminCode.admincode )
-    isAdmin = true;
+  if(req.user.admincode === adminCode.admincode ) {
+    isAdmin = check;
+    check = false;
+  }
   res.render('event', {
     isAdmin: isAdmin,
   });

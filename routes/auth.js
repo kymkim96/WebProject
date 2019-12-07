@@ -60,4 +60,28 @@ router.get('/logout', isLoggedIn, (req, res) => {
     res.redirect('/')
 })
 
+//회원정보 수정 라우터
+router.put('/user-update', isLoggedIn, async (req, res) => {
+    const { email, nick, password, tlno, category, copy, human } = req.body;
+    const hash = await bcrypt.hash(password, 12);
+    await User.update({
+        email: email,
+        nick: nick,
+        password: hash,
+        phoneNumber: tlno,
+        category,
+        receiveMail: copy,
+        admitPrivate: human,
+    }, {
+        where: { id: req.user.id }
+    });
+    /*
+    * 303 status code를 넣어야 put 요청으로 들어왔던 것이
+    * get 요청으로 바뀌어서 응답으로 나갈 수 있다
+     */
+    if(req.user.admincode === adminCode.admincode)
+        return res.redirect(303, '/adminpage');
+    return res.redirect(303, '/mypage');
+});
+
 module.exports = router;

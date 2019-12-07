@@ -101,10 +101,10 @@ if( !patt.test( $("#tlno").val()) ){
 		<h1>Whatch Theater</h1>
 		<nav>
 			<ul class="menu">
-				<li><a href="#" class="menu">Home</a></li>
-				<li><a href="#" class="menu">연극</a></li>
-				<li><a href="#" class="menu">뮤지컬</a></li>
-				<li><a href="#" class="menu">마이페이지</a></li>
+				<li><a href="/" class="menu">Home</a></li>
+				<li><a href="/poster-act/page/1" class="menu">연극</a></li>
+				<li><a href="/poster-musical/page/1" class="menu">뮤지컬</a></li>
+				<li><a href="/mypage" class="menu">마이페이지</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -126,49 +126,45 @@ if( !patt.test( $("#tlno").val()) ){
 
 <div id="wrapper" class="signUp">
 							<!-- Form -->
-								<form method="post" action="#">
+								<form action="/auth/user-update" id="form">
 									<div class="sginUpText">
 										<div>
-											<input type="text" name="name" id="name" value="" placeholder="Name" />
+											<input type="text" name="nick" id="name" value="<%= user.nick %>" placeholder="Name" />
 										</div>
 										<p></p>
 										<div>
-											<input type="email" name="email" id="email" value="" placeholder="Email" />
+											<input type="email" name="email" id="email" value="<%= user.email %>" placeholder="Email" />
 										</div>
 										<p></p>
 										<div>
-											<input type="text" name="ID" id="ID" value="ID" placeholder="ID" />
-										</div>
-										<p></p>
-										<div>
-											<input type="Password" name="Password" id="Password" placeholder="Password">
+											<input type="Password" name="password" id="Password" value="" placeholder="Password">
 										</div>
 										<p></p>
 										<!-- Break -->
-										<input style="width:280px; height:45px" type="tel" name="tlno" title="전화번호를 입력하세요." placeholder="010-0000-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
+										<input style="width:280px; height:45px" type="tel" name="tlno" title="전화번호를 입력하세요." value="<%= user.phoneNumber %>" placeholder="010-0000-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
 										<p></p>
 											<div>
 												<select name="category" id="category">
 													<option value="">- favorite category of play -</option>
 													<option value="1">스릴러</option>
-													<option value="1">로맨스</option>
-													<option value="1">공포</option>
-													<option value="1">추리</option>
+													<option value="2">로맨스</option>
+													<option value="3">공포</option>
+													<option value="4">추리</option>
 												</select>
 											</div>
 										</div><p></p>
 										<div>
-											<input type="checkbox" id="copy" name="copy">
+											<input type="checkbox" id="copy" name="copy" value="receiveMail">
 											<label for="copy">이메일 수신 동의</label>
 										</div>
 										<div>
-											<input type="checkbox" id="human" name="human" checked>
+											<input type="checkbox" id="human" name="human" checked value="admitPrivate">
 											<label for="human">개인정보처리약관 동의</label>
 										</div>
 										<p></p><p></p>
 										<div>
 											<ul>
-												<li><input style="float:left;" type="submit" value="등록" /></li>
+												<li><input id="submit" style="float:left;" type="button" value="등록" onclick="userUpdate()" /></li>
 												
 											</ul>
 										</div>
@@ -213,6 +209,36 @@ email :
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				var userUpdate = () => {
+					var xhr = new XMLHttpRequest();
+					var data = {
+						nick: $("input[name='nick']").val(),
+						email: $("input[name='email']").val(),
+						password: $("input[name='password']").val(),
+						phoneNumber: $("input[name='tlno']").val(),
+						copy: $("input[name='copy']").val(),
+						human: $("input[name='human']").val(),
+						category: $("#category").val(),
+					};
+					/*
+					* 요청을 보내고 응답을 받지 않으면 계속해서 페이지가 빙빙돈다
+					* 그러므로 onload 함수를 통해 직접 리다이렉트를 만져야한다
+					 */
+					xhr.onload = function() {
+						if(xhr.status === 200) {
+							alert('수정되었습니다');
+							//리다이렉트
+							location.assign(xhr.responseURL);
+						} else {
+							console.error(xhr.responseText);
+						}
+					};
+					xhr.open('PUT', '/auth/user-update');
+					xhr.setRequestHeader('Content-Type', 'application/json');
+					xhr.send(JSON.stringify(data));
+				}
+			</script>
 
 	</body>
 </html>
