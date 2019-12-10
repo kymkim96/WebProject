@@ -2,7 +2,7 @@ exports.isLoggedIn = (req, res, next) => {
     if(req.isAuthenticated()) {
         next();
     } else {
-        alert('로그인 필요');
+        res.redirect('/');
     }
 };
 
@@ -10,7 +10,7 @@ exports.isNotLoggedIn = (req, res, next) => {
     if(!req.isAuthenticated()) {
         next();
     } else {
-        //console.log(req.isAuthenticated())
+
         res.redirect('/');
     }
 }

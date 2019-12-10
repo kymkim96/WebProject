@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { checkAdminPermission, adminCode } = require('./middlewares');
+const { checkAdminPermission, adminCode, isLoggedIn } = require('./middlewares');
 
-router.get('/', function(req, res, next) {
-   console.log('여기로 잘들어온건가요...?');
+router.get('/', isLoggedIn, function(req, res, next) {
    if(req.user.admincode === adminCode.admincode ) {
       res.redirect('/adminpage');
    } else

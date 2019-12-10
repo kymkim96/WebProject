@@ -149,20 +149,20 @@ h1{color:white; line-height: 75px; float:left;}
 		</tr>
 		<% for( let i = ((pageId - 1) * 5) ; i < 5 * pageId ; i++ ) { %>
 		<tr>
-			<td class="textNum"><%= posts[i].id %></td>
+			<td class="textNum"><%= i + 1 %></td>
 			<td class="textTitle">
-				<a href="/viewEvent_notice">
+				<a href="/viewEvent_notice?id=<%= posts[i].id %>">
 					<%= posts[i].title %>
 				</a>
 			</td>
 			<td class="textWriter">관리자</td>
-			<td class="textDay"><%= posts[i].createdAt %>></td>
+			<td class="textDay"><%= posts[i].createdAt %></td>
 		</tr>
 		<% if(!posts[i + 1]) break;
 		} %>
 	</table>
 <!--관리자로 로그인해야만 이 버튼이, 보이도록-->
-<% if(isAdmin) { %>
+<% if( user.admincode ) { %>
 <div style="float;right;">
 		<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none; text-align: center;"><a href="/writeBoard">작성</a>
 		</button>

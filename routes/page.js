@@ -3,7 +3,8 @@ var router = express.Router();
 const { isLoggedIn, isNotLoggedIn, adminCode, checkAdminPermission } = require('./middlewares');
 const { Poster, User } = require('../models');
 var check = true;
-var isAdmin = check;
+var isAdmin = false;
+var db = require('../models');
 
 //메인 페이지
 router.get('/', function(req, res, next) {
@@ -35,14 +36,19 @@ router.get('/information-update', isLoggedIn, function (req, res, next) {
 
 //이벤트 페이지
 router.get('/event/:id', isLoggedIn, async (req, res, next) => {
-  if(req.user.admincode === adminCode.admincode ) {
-    check = false;
-  }
 
-  const posts = await Poster.findAll({where: {classify: 'event'}});
+  const posts = await Poster.findAll({
+    attributes: [
+        'id',
+        'title',
+      [db.Sequelize.fn('date_format', db.Sequelize.col('createdAt'), '%Y-%m-%d'), 'createdAt'],
+    ],
+    where: {
+    classify: 'event',
+    }});
 
   res.render('event', {
-    isAdmin: isAdmin,
+    user: req.user,
     posts: posts,
     pageId: req.params.id,
     pageCount: posts.length,
@@ -51,16 +57,14 @@ router.get('/event/:id', isLoggedIn, async (req, res, next) => {
 
 //공지사항
 router.get('/notice/1', isLoggedIn, async (req, res, next) => {
-  if(req.user.admincode === adminCode.admincode ) {
-    check = false;
-  }
 
   const posts = await Poster.findAll({where: {classify: 'notice'}});
 
   res.render('notice', {
-    isAdmin,
+    user: req.user,
     posts: posts,
     pageId: req.params.id,
+    pageCount: posts.length,
   });
 });
 
@@ -72,6 +76,14 @@ router.get('/addContent', checkAdminPermission, function (req, res, next) {
 //이벤트, 공지사항 업로드 페이지
 router.get('/writeBoard', checkAdminPermission, function (req, res, next) {
   res.render('writeBoard');
+});
+
+//이벤트, 공지사항 상세 페이지
+router.get('/viewEvent_notice', isLoggedIn, async (req, res, next) => {
+  const post = await Poster.findOne({where: {id: req.query.id}});
+  res.render('viewEvent_Notice', {
+    post,
+  });
 });
 
 module.exports = router;
