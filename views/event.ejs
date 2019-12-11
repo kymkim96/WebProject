@@ -147,7 +147,9 @@ h1{color:white; line-height: 75px; float:left;}
 			<td class="textWriter">ID</td>
 			<td class="textDay">날짜</td>
 		</tr>
-		<% for( let i = ((pageId - 1) * 5) ; i < 5 * pageId ; i++ ) { %>
+<% if(pageCount != 0) {
+		for( let i = ((pageId - 1) * 5) ; i < 5 * pageId ; i++ ) {
+	 %>
 		<tr>
 			<td class="textNum"><%= i + 1 %></td>
 			<td class="textTitle">
@@ -159,7 +161,8 @@ h1{color:white; line-height: 75px; float:left;}
 			<td class="textDay"><%= posts[i].createdAt %></td>
 		</tr>
 		<% if(!posts[i + 1]) break;
-		} %>
+		}
+	}%>
 	</table>
 <!--관리자로 로그인해야만 이 버튼이, 보이도록-->
 <% if( user.admincode ) { %>

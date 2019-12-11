@@ -104,4 +104,24 @@ router.post('/review-upload', isLoggedIn, upload2.none(), async (req, res, next)
     }
 });
 
+//게시글 수정 라우터
+router.put('/update', checkAdminPermission, async (req, res, next) => {
+    const { title, url, content, classify, postId } = req.body;
+    console.log(content);
+    try {
+        await Poster.update({
+            title,
+            thumbnail: url,
+            longinfo: content,
+            classify,
+        }, {
+            where: {id: postId}
+        });
+        res.redirect(303, `/viewEvent_notice?id=${postId}`)
+    } catch(error) {
+        console.error(error);
+        next(error);
+    }
+});
+
 module.exports = router;

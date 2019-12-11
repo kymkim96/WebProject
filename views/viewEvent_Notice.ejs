@@ -129,11 +129,18 @@ h1{color:white; line-height: 75px; float:left;}
 	</tr>
 </table>
 
-<!--관리자 ID일 때만 보일 수 있도록
-<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none;">수정
-		</button>
-		<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none;">삭제
-		</button>-->
+<!--관리자 ID일 때만 보일 수 있도록-->
+<% if( user.admincode ) { %>
+<form action="/writeBoard-update" method="get">
+	<input type="hidden" name="id" value="<%= post.id %>">
+	<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none;">
+		수정
+	</button>
+</form>
+<button type="submit" style="float:right; vertical-align: :center; width:100px; height:50px; font-size:18px; border:0px; background:black; outline:none;">
+	삭제
+</button>
+<% } %>
 				<!-- Footer -->
 				<br><br><br><br><br><br>
 					<footer id="footer">

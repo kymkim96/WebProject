@@ -126,7 +126,6 @@ if( !patt.test( $("#tlno").val()) ){
 
 <div id="wrapper" class="signUp">
 							<!-- Form -->
-								<form action="/auth/user-update" id="form">
 									<div class="sginUpText">
 										<div>
 											<input type="text" name="nick" id="name" value="<%= user.nick %>" placeholder="Name" />
@@ -164,18 +163,17 @@ if( !patt.test( $("#tlno").val()) ){
 										<p></p><p></p>
 										<div>
 											<ul>
-												<li><input id="submit" style="float:left;" type="button" value="회원탈퇴" onclick="userUpdate()" /></li>
+												<li><input id="submit" style="float:left;" type="button" value="회원탈퇴" /></li>
 												
 											</ul>
 										</div>
 <p></p><p></p>
 										<div>
 											<ul>
-												<li><input style="float:left;" type="submit" value="등록" /></li>
+												<li><input style="float:left;" type="submit" value="등록" onclick="userUpdate()"/></li>
 												
 											</ul>
 										</div>									</div>
-								</form>
 				</div>
 
 <!--

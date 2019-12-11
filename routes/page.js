@@ -56,10 +56,17 @@ router.get('/event/:id', isLoggedIn, async (req, res, next) => {
 });
 
 //공지사항
-router.get('/notice/1', isLoggedIn, async (req, res, next) => {
+router.get('/notice/:id', isLoggedIn, async (req, res, next) => {
 
-  const posts = await Poster.findAll({where: {classify: 'notice'}});
-
+  const posts = await Poster.findAll({
+    attributes: [
+      'id',
+      'title',
+      [db.Sequelize.fn('date_format', db.Sequelize.col('createdAt'), '%Y-%m-%d'), 'createdAt'],
+    ],
+    where: {
+      classify: 'notice',
+    }});
   res.render('notice', {
     user: req.user,
     posts: posts,
@@ -75,14 +82,38 @@ router.get('/addContent', checkAdminPermission, function (req, res, next) {
 
 //이벤트, 공지사항 업로드 페이지
 router.get('/writeBoard', checkAdminPermission, function (req, res, next) {
-  res.render('writeBoard');
+  const update = false;
+  res.render('writeBoard', {
+    update,
+  });
 });
 
 //이벤트, 공지사항 상세 페이지
 router.get('/viewEvent_notice', isLoggedIn, async (req, res, next) => {
-  const post = await Poster.findOne({where: {id: req.query.id}});
+  const post = await Poster.findOne({
+    attributes: [
+      'id',
+      'title',
+      'longinfo',
+      [db.Sequelize.fn('date_format', db.Sequelize.col('createdAt'), '%Y-%m-%d'), 'createdAt'],
+    ],
+    where: {
+      id: req.query.id,
+    }});
   res.render('viewEvent_Notice', {
     post,
+    user: req.user,
+  });
+});
+
+//이벤트, 공지사항 수정 페이지
+router.get('/writeBoard-update', checkAdminPermission, async (req, res, next) => {
+  console.log(req.query.id);
+  const post = await Poster.findOne({where: {id: req.query.id}});
+  const update = true;
+  res.render('writeBoard', {
+    post,
+    update,
   });
 });
 
