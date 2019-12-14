@@ -42,6 +42,7 @@ app.use('/mypage', express.static(path.join(__dirname, 'public')));
 app.use('/adminpage', express.static(path.join(__dirname, 'public')));
 app.use('/event', express.static(path.join(__dirname, 'public')));
 app.use('/notice', express.static(path.join(__dirname, 'public')));
+app.use('/recommend', express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

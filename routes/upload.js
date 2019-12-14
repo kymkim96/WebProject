@@ -24,13 +24,12 @@ const upload = multer({
             cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
         },
     }),
-    limits: {fileSize: 5 * 1024 * 1024},
+    limits: {fileSize: 10 * 1024 * 1024},
 });
 
 // method: post, action: /upload/img
 // 이미지 첨부 라우터
 router.post('/img', upload.single('img'), (req, res) => {
-    //console.log(req.file);
     res.json({url: `/img/${req.file.filename}`});
 });
 
@@ -97,7 +96,7 @@ router.post('/review-upload', isLoggedIn, upload2.none(), async (req, res, next)
         const user = await User.findOne({ where: {id: req.user.id}});
         await user.addReview(review);
 
-        res.redirect(`/poster-act/detail/1?id=${req.body.id}`);
+        res.redirect(`/poster-act/detail?id=${req.body.id}`);
     } catch(error) {
         console.error(error);
         next(error);
@@ -118,6 +117,20 @@ router.put('/update', checkAdminPermission, async (req, res, next) => {
             where: {id: postId}
         });
         res.redirect(303, `/viewEvent_notice?id=${postId}`)
+    } catch(error) {
+        console.error(error);
+        next(error);
+    }
+});
+
+router.delete('/delete', checkAdminPermission, async (req, res, next) => {
+    const { postId, classify } = req.body;
+    try {
+        await Poster.destroy({ where: { id: postId }});
+        if(classify === 'event')
+            res.redirect(303, '/event/1');
+        else
+            res.redirect(303, '/notice/1');
     } catch(error) {
         console.error(error);
         next(error);

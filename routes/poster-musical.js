@@ -36,15 +36,26 @@ router.get('/search/:id', async (req, res, next) => {
 });
 
 //상세 페이지
-router.get('/detail/:id', async (req, res, next) => {
+router.get('/detail', async (req, res, next) => {
     try {
         const post = await Poster.findOne({ where: { id: req.query.id }});
-        const reviews = await post.getReviews();
+        const reviews = await post.getReviews({
+            attributes: [
+                'id',
+                'userId',
+                'img',
+                'content',
+                'rank',
+                [db.Sequelize.fn('date_format', db.Sequelize.col('createdAt'), '%Y-%m-%d'), 'createdAt'],
+            ]
+        });
+
+        const users = await User.findAll();
+
         res.render('viewReview', {
             post: post,
-            pageId: req.params.id,
             reviews: reviews,
-            pageCount: reviews.length,
+            users: users,
         });
     } catch(error) {
         console.error(error);

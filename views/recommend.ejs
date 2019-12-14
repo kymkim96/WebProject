@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<style>
+.wrappp{max-width: 900px; float:center;}
+.tableWrappp{max-width: 900px; float:left;
+			width:130px; height:300px; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace; display:inline;}
+img{
+	width:125px;
+	height:200px;
+}
+
+span{
+	display:table-row;
+	text-align: center;
+}
+
+td{
+	width:150px;
+	height:220px;
+}
+
+ul {
+	list-style:none;
+	float:left;
+	display:inline;
+}
+ul li {
+	list-style:none;
+	float:left;
+}
+ul li a {
+	float:left;
+	padding:4px;
+	margin-right:10px;
+	width:25px;
+	color:white;
+	font:bold 15px tahoma;
+	border:1px solid #eee;
+	text-align:center;
+	text-decoration:none;
+}
+ul li a:hover, ul li a:focus {
+	color:black;
+	border:1px solid white;
+	background-color:white;
+}
+
+
+
+li{list-style:none;}
+a{text-decoration: none;}
+
+.clearfix{content:''; display:block; clear:both;}
+.head{
+	height:75px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border:1px solid black;
+	position: fixed;
+	width:100%;
+	z-index:999;
+	top:0;
+	left:0;
+}
+h1{color:white; line-height: 75px; float:left;}
+.menu{float:right;}
+.menu li{float:left;}
+.menu li a{border:0; text-align: center; width:150px; line-height: 75px; color:white; padding: 0 15px; display:block;}
+
+		</style>
+		<title>Whatch Theater-맞춤 추천</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload" style="font-family: 'Nanum Gothic Coding', monospace;">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+<!--연극 배너
+<p></p><p></p><p></p>
+					<h1 style="font-family: 'Nanum Gothic Coding', monospace;">연극</h1>
+-->
+<p></p>
+
+<header class="head">
+	<div>
+		<h1>Whatch Theater</h1>
+		<nav>
+			<ul class="menu">
+				<li><a href="/" class="menu">Home</a></li>
+				<li><a href="/poster-act/page/1" class="menu">연극</a></li>
+				<li><a href="/poster-musical/page/1" class="menu">뮤지컬</a></li>
+				<li><a href="/mypage" class="menu">마이페이지</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+
+
+
+<br><br><br><br>
+<header id="header" style="display:block;">
+	<div class="content">
+		<div class="inner">
+			<h1>맞춤 추천</h1>
+		</div>
+	</div>
+</header>
+
+
+
+
+
+<br><br><br><br><br>
+<h2>회원님이 선호하시는 카테고리에 맞는 연극/뮤지컬을 추천해드립니다!</h2>
+<br><br>
+
+<%
+	var isBreak = 0;
+	var pageCountMax = 25;	// 한 페이지 당 게시물 최대 수
+	var pageNumber = Math.ceil(pageCount / pageCountMax);
+	var posterArray = [];
+%>
+
+<table style="width:900px;">
+	<% if( pageCount != 0 ) {
+		for( let i = ((pageId - 1) * 5) ; i < 5 * pageId ; i++ ) {
+			var index = 0;
+	%>
+			<tr>
+				<% for (let j = i * 5; j < (5 * (i+1)); j++) {
+					if(!posts[j]) {
+						isBreak = 1;
+						posterArray[index++] = {
+							title: '',
+							thumbnail: '',
+							id: '',
+						};
+					} else {
+						posterArray[index++] = {
+							title: posts[j].title,
+							thumbnail: posts[j].thumbnail,
+							id: posts[j].id,
+						}
+					}
+				} %>
+				<td align="center">
+				<span>
+					<% if(posterArray[0].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[0].thumbnail) %> >
+					<% } %>
+				</span>
+					<span>
+					<a href="/poster-act/detail?id=<%= posterArray[0].id %>">
+						<%= posterArray[0].title %>
+					</a>
+				</span>
+				</td>
+				<td align="center">
+				<span>
+					<% if(posterArray[1].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[1].thumbnail) %> >
+					<% } %>
+				</span>
+					<span>
+					<a href="/poster-act/detail?id=<%= posterArray[1].id %>">
+						<%= posterArray[1].title %>
+					</a>
+				</span>
+				</td>
+				<td align="center">
+				<span>
+					<% if(posterArray[2].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[2].thumbnail) %> >
+					<% } %>
+				</span>
+					<span>
+					<a href="/poster-act/detail?id=<%= posterArray[2].id %>">
+						<%= posterArray[2].title %>
+					</a>
+				</span>
+				</td>
+				<td align="center">
+				<span>
+					<% if(posterArray[3].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[3].thumbnail) %> >
+					<% } %>
+				</span>
+					<span>
+					<a href="/poster-act/detail?id=<%= posterArray[3].id %>">
+						<%= posterArray[3].title %>
+					</a>
+				</span>
+				</td>
+				<td align="center">
+				<span>
+					<% if(posterArray[4].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[4].thumbnail) %> >
+					<% } %>
+				</span>
+					<span>
+					<a href="/poster-act/detail?id=<%= posterArray[4].id %>">
+						<%= posterArray[4].title %>
+					</a>
+				</span>
+				</td>
+			</tr>
+	<%
+			if(isBreak) break;
+		}
+	}%>
+</table>
+
+
+<br>
+
+
+<br><br><br><br>
+	<!-- 페이지 리스트 번호 -->
+	<ul>
+		<% for(let i = 1 ; i <= pageNumber ; i++) { %>
+			<li><a href="/poster-act/page/<%= i %>"> <%= i %> </a></li>
+		<% } %>
+	</ul>
+
+
+				<!-- Footer -->
+					<footer id="footer" style="font-size:18px;">
+						Whatch Theater
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

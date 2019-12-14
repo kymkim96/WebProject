@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Poster, Review, User } = require('../models');
+var db = require('../models');
 
 //연극 페이지 로딩
 router.get('/page/:id', async (req, res, next) => {
@@ -37,18 +38,25 @@ router.get('/search/:id', async (req, res, next) => {
 //viewAct : 연극 상세 페이지
 router.get('/detail', async (req, res, next) => {
     try {
-        const post = await Poster.findOne({ where: { id: req.query.id }});
-        const reviews = await post.getReviews();
+            const post = await Poster.findOne({ where: { id: req.query.id }});
+            const reviews = await post.getReviews({
+                attributes: [
+                    'id',
+                    'userId',
+                    'img',
+                    'content',
+                    'rank',
+                    [db.Sequelize.fn('date_format', db.Sequelize.col('createdAt'), '%Y-%m-%d'), 'createdAt'],
+                ]
+            });
 
-        const users = await User.findAll();
+            const users = await User.findAll();
 
-        res.render('viewReview', {
-            post: post,
-            pageId: req.params.id,
-            reviews: reviews,
-            users: users,
-            pageCount: reviews.length,
-        });
+            res.render('viewReview', {
+                post: post,
+                reviews: reviews,
+                users: users,
+            });
     } catch(error) {
         console.error(error);
         next(error)

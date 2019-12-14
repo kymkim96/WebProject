@@ -154,66 +154,66 @@ var posterArray = [];
 				}
 			}
 		} %>
-	<td align="center">
-		<span>
-			<% if(posterArray[0].thumbnail != '') { %>
-				<img src= <%= posterArray[0].thumbnail %> >
-			<% } %>
-		</span>
-		<span>
-			<a href="/poster-musical/detail/1?id=<%= posterArray[0].id %>">
-				<%= posterArray[0].title %>
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<% if(posterArray[1].thumbnail != '') { %>
-				<img src= <%= posterArray[1].thumbnail %> >
-			<% } %>
-		</span>
-		<span>
-			<a href="/poster-musical/detail/1?id=<%= posterArray[1].id %>">
-				<%= posterArray[1].title %>
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<% if(posterArray[2].thumbnail != '') { %>
-				<img src= <%= posterArray[2].thumbnail %> >
-			<% } %>
-		</span>
-		<span>
-			<a href="/poster-musical/detail/1?id=<%= posterArray[2].id %>">
-				<%= posterArray[2].title %>
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<% if(posterArray[3].thumbnail != '') { %>
-				<img src= <%= posterArray[3].thumbnail %> >
-			<% } %>
-		</span>
-		<span>
-			<a href="/poster-musical/detail/1?id=<%= posterArray[3].id %>">
-				<%= posterArray[3].title %>
-			</a>
-		</span>
-	</td>
-	<td align="center">
-		<span>
-			<% if(posterArray[3].thumbnail != '') { %>
-				<img src= <%= posterArray[3].thumbnail %> >
-			<% } %>
-		</span>
-		<span>
-			<a href="/poster-musical/detail/1?id=<%= posterArray[3].id %>">
-				<%= posterArray[3].title %>
-			</a>
-		</span>
-	</td>
+		<td align="center">
+				<span>
+					<% if(posterArray[0].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[0].thumbnail) %> >
+					<% } %>
+				</span>
+			<span>
+					<a href="/poster-act/detail?id=<%= posterArray[0].id %>">
+						<%= posterArray[0].title %>
+					</a>
+				</span>
+		</td>
+		<td align="center">
+				<span>
+					<% if(posterArray[1].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[1].thumbnail) %> >
+					<% } %>
+				</span>
+			<span>
+					<a href="/poster-act/detail?id=<%= posterArray[1].id %>">
+						<%= posterArray[1].title %>
+					</a>
+				</span>
+		</td>
+		<td align="center">
+				<span>
+					<% if(posterArray[2].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[2].thumbnail) %> >
+					<% } %>
+				</span>
+			<span>
+					<a href="/poster-act/detail?id=<%= posterArray[2].id %>">
+						<%= posterArray[2].title %>
+					</a>
+				</span>
+		</td>
+		<td align="center">
+				<span>
+					<% if(posterArray[3].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[3].thumbnail) %> >
+					<% } %>
+				</span>
+			<span>
+					<a href="/poster-act/detail?id=<%= posterArray[3].id %>">
+						<%= posterArray[3].title %>
+					</a>
+				</span>
+		</td>
+		<td align="center">
+				<span>
+					<% if(posterArray[4].thumbnail != '') { %>
+						<img src= <%= encodeURI(posterArray[4].thumbnail) %> >
+					<% } %>
+				</span>
+			<span>
+					<a href="/poster-act/detail?id=<%= posterArray[4].id %>">
+						<%= posterArray[4].title %>
+					</a>
+				</span>
+		</td>
 	</tr>
 		<%
 			if(isBreak) break;

@@ -163,7 +163,7 @@ if( !patt.test( $("#tlno").val()) ){
 										<p></p><p></p>
 										<div>
 											<ul>
-												<li><input id="submit" style="float:left;" type="button" value="회원탈퇴" /></li>
+												<li><input id="submit" style="float:left;" type="button" value="회원탈퇴" onclick="userDelete()"/></li>
 												
 											</ul>
 										</div>
@@ -240,6 +240,24 @@ email :
 					xhr.open('PUT', '/auth/user-update');
 					xhr.setRequestHeader('Content-Type', 'application/json');
 					xhr.send(JSON.stringify(data));
+				}
+				var userDelete = () => {
+					var xhr = new XMLHttpRequest();
+					/*
+					* 요청을 보내고 응답을 받지 않으면 계속해서 페이지가 빙빙돈다
+					* 그러므로 onload 함수를 통해 직접 리다이렉트를 만져야한다
+					 */
+					xhr.onload = function() {
+						if(xhr.status === 200) {
+							alert('탈퇴되었습니다');
+							//리다이렉트
+							location.assign(xhr.responseURL);
+						} else {
+							console.error(xhr.responseText);
+						}
+					};
+					xhr.open('DELETE', '/auth/user-delete');
+					xhr.send();
 				}
 			</script>
 

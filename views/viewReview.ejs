@@ -158,6 +158,8 @@ h1{color:white; line-height: 75px; float:left;}
 	<tr>
 		<td>
 			간략설명
+			<br>
+			<%= post.shortinfo %>
 			<br><br><br><br>
 		</td>
 	</tr>
@@ -177,9 +179,9 @@ h1{color:white; line-height: 75px; float:left;}
 	</tr>
 	<tr>
 		<td colspan="3"><a name="description">
-		<br><h2>상세정보</h2></a><br><br>
-		<br><br><br><br><br><br><br><br><br><br>
-		<br><br><br><br><br><br><br><br><br><br>
+		<br><h2>상세정보</h2></a><br>
+			<%= post.longinfo %>
+			<p>
 		</td>
 	</tr>
 	<tr>
@@ -209,9 +211,9 @@ h1{color:white; line-height: 75px; float:left;}
 			<table>
 				<% if( review.img ) { %>
 				<img src=<%= review.img %> class="reviewImg">
-				<% } %>
 				<!--리뷰 쓸 때 첨부한 사진 올라가는 부분, 아무것도 첨부 하지 않으면 아무것도 안보이게하기-->
 				<br>
+				<% } %>
 				<% for(let i = 0 ; i < parseInt(review.rank) ; i++ ){ %>
 				<span><img style="width:30px; height:30px;" src="images/star.png"></span>
 				<!--리뷰 쓸때 매긴 별점 만큼 for문 돌려서 별 출력-->
@@ -223,7 +225,7 @@ h1{color:white; line-height: 75px; float:left;}
                     }
                 }
                 %>
-                <%= userNick %>
+                ID : <%= userNick %>
 				<br>
 				<%= review.createdAt %>
 				<br>

@@ -13,7 +13,8 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/introduce', isNotLoggedIn, function(req, res, next) {
+//소개 페이지
+router.get('/introduce', function(req, res, next) {
   res.render('intro');
 });
 
@@ -95,6 +96,7 @@ router.get('/viewEvent_notice', isLoggedIn, async (req, res, next) => {
       'id',
       'title',
       'longinfo',
+      'classify',
       [db.Sequelize.fn('date_format', db.Sequelize.col('createdAt'), '%Y-%m-%d'), 'createdAt'],
     ],
     where: {
@@ -110,11 +112,28 @@ router.get('/viewEvent_notice', isLoggedIn, async (req, res, next) => {
 router.get('/writeBoard-update', checkAdminPermission, async (req, res, next) => {
   console.log(req.query.id);
   const post = await Poster.findOne({where: {id: req.query.id}});
-  const update = true;
+  const update = true;  //수정 폼이 나오도록
   res.render('writeBoard', {
     post,
     update,
   });
 });
+
+//맞춤 추천 페이지
+router.get('/recommend/:id', isLoggedIn, async (req, res, next) => {
+  try {
+    const user = await User.findOne({ where: { id: req.user.id }});
+    const posts = await Poster.findAll({ where: { genre: user.category }});
+    res.render('recommend', {
+      posts,
+      pageId: req.params.id,
+      pageCount: posts.length,
+    });
+  } catch(error) {
+    console.error(error);
+    next(error);
+  }
+
+})
 
 module.exports = router;

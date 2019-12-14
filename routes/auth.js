@@ -84,4 +84,10 @@ router.put('/user-update', isLoggedIn, async (req, res) => {
     return res.redirect(303, '/mypage');
 });
 
+// 회원 탈퇴 라우터
+router.delete('/user-delete', isLoggedIn, async (req, res, next) => {
+    await User.destroy({where: {id: req.user.id }});
+    res.redirect(303, '/');
+});
+
 module.exports = router;
