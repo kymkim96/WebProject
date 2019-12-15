@@ -133,13 +133,11 @@ h1{color:white; line-height: 75px; float:left;}
 %>
 
 
-<table class="wrappp" style="width: 1000px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
+<table class="wrappp" style="width: 800px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
 	<tr>
-		<td align="center" rowspan="4" style="width:35%; margin-top: auto; margin-bottom: auto;">
-			<img src="http://www.munhwanews.com/news/photo/201605/17008_35926_2311.jpg" width="180px" height="250px">
+		<td align="center" rowspan="3" style="width: 35%; margin-top:auto; margin-bottom:auto;">
+			<img src="<%= post.thumbnail %>">
 		</td>
-	</tr>
-	<tr>
 		<td>
 			<%= post.title %>
 		</td>
@@ -159,12 +157,11 @@ h1{color:white; line-height: 75px; float:left;}
 		<td>
 			간략설명
 			<br>
-						<%= post.shortinfo %>
-<br><br><br>
+			<%= post.shortinfo %>
+			<br><br><br><br>
 		</td>
 	</tr>
 </table>
-
 
 <table class="wrappp" style="width: 800px; height: 300px; margin-left:auto; margin-right:auto; font-color:white; font-size:18px; font-family: 'Nanum Gothic Coding', monospace;" cellspacing="3px">
 	<tr  style="height: 50px;">
