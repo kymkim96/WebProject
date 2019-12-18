@@ -126,11 +126,13 @@ h1{color:white; line-height: 75px; float:left;}
 
 <%
 var rankAvg = 0;
-for( let review of reviews ) {
-	rankAvg += review.rank;
+if(reviews.length != 0) {
+	for( let review of reviews ) {
+		rankAvg += parseInt(review.rank);
+	}
+	rankAvg /= reviews.length;
+	rankAvg = Math.ceil(rankAvg);
 }
-rankAvg /= reviews.length;
-rankAvg = Math.ceil(rankAvg);
 %>
 
 <img src="<%= post.thumbnail %>" style="width:300px; height:400px; display:inline-block;">
@@ -220,6 +222,7 @@ rankAvg = Math.ceil(rankAvg);
 			<br>
 			<%
                 var userNick;
+                if(reviews.length > 0) {
 				for(let review of reviews) {
  			%>
 			<table>
@@ -245,7 +248,8 @@ rankAvg = Math.ceil(rankAvg);
 				<br>
 				<%= review.content %>
 			</table><hr>
-			<% } %>
+			<% }
+			} %>
 		<button style="float:right; vertical-align: :center; width:130px; height:50px; font-size:18px; border:0px; background:black; outline:none;"><a href="/poster-act/review-upload?id=<%= post.id %>"> 리뷰 등록 </a>
 		</button>
 	</td>
